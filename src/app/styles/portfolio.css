@@ -517,8 +517,8 @@ ul::-webkit-scrollbar {width: 10px;}
     background: var(--primary-color);
 }
 .playlist-header img {
-    width: 150;
-    height: 150;
+    width: 150px;
+    height: 150px;
 }
 .playlist-header + div{
     display: flex;
