@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
+import dynamic from "next/dynamic";
 import Map from "../components/Map";
-import Slider from '../components/Slider'
 import Playlist from '../components/PlaylistSlider';
 import { useInView } from 'react-intersection-observer';
 import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
@@ -15,6 +15,11 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import Music from "../components/Music";
 import { PageWrapper } from "../components/PageWrapper";
 library.add(fas, far, fab)
+
+const Slider = dynamic(() => import('../components/Slider'), {
+  ssr: false,
+  loading: () => <div className='loader'><FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" /></div>,
+});
 
 type VideoItem = {
   id: string;
