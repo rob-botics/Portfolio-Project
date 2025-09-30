@@ -1,13 +1,14 @@
 /* #ececec */
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 :root{
-    --primary-font: "Indie Flower", cursive;
-    --secondary-font: "Quicksand", sans-serif;
+    --primary-font: "Indie Flower";
+    --secondary-font: "M PLUS Rounded 1c";
     --slt-primary-color: rgba(231, 84, 128,.925);
 }
 /* Home */
-a{color: whitesmoke;}
+a,::placeholder{color: whitesmoke;}
 .logo{
     z-index: 100;
     width: 100px;
@@ -70,6 +71,15 @@ main{
 }
 .slt-aside ul li{transition: .5s;}
 .slt-aside ul li:hover{font-size: small;}
+.slt-secondary-bg + .loading{
+    z-index: 100;
+    display: flex;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(231, 84, 128,.5);
+}
+.loading svg{margin: auto;}
 /* Nav */
 nav{
     z-index: 10;
@@ -256,6 +266,7 @@ p button:hover {
     display: flex;
     place-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .subscribe{
     gap: 1rem;
@@ -272,6 +283,8 @@ p button:hover {
     font-size: large;
     text-align: center;
     border-radius: 4px;
+    color: whitesmoke;
+    letter-spacing: .25rem;
     background: var(--slt-primary-color);
     font-family: var(--secondary-font);
     border-bottom: 5px solid var(--slt-primary-color);
@@ -292,6 +305,11 @@ p button:hover {
     scale: 1.125;
     color: whitesmoke;
     background: var(--slt-primary-color);
+}
+.error{
+    font-weight: bold;
+    color: palevioletred;
+    font-family: var(--secondary-font);
 }
 /* End of Home */
 /* Menu */

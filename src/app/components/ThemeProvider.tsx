@@ -25,7 +25,7 @@ export const ThemeContext = createContext<Theme>('forest');
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [sidebar, setSidebar] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [theme, setTheme] = useState<Theme>('forest');
   const themeChanger = (theme: Theme) => {setTheme(theme)}
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -60,11 +60,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [theme, pathname]);
   useEffect(() => {
     const handleLoad = () => {
-      setIsLoaded(false);
+      setIsLoaded(true);
     };
 
     if (document.readyState === 'complete') 
-      handleLoad();
+      setTimeout(() => handleLoad(), 1000)
     else {
       window.addEventListener('load', handleLoad);
       return () => window.removeEventListener('load', handleLoad);
@@ -73,7 +73,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <LoadingScreen loaded={isLoaded}/>
+      <LoadingScreen loaded={!isLoaded}/>
       <ThemeContext.Provider value={theme}>
       {pathname.includes('slt') ? <>
           <Nav/>

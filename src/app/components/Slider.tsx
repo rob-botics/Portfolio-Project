@@ -52,7 +52,6 @@ const Slider = ({page}: SliderProps) => {
                         handcrafted cupcakes — fluffy, moist, and topped with irresistible buttercream. Perfect for parties, gifts, or a well-deserved treat.<br/><br/>
                         <button>Order Now!</button>
                     </p>
-                    
                 </SwiperSlide>
                 <SwiperSlide className='header-img2'>
                     <div className='sprinkles'>

@@ -41,10 +41,35 @@ export default function Playlist() {
     const [replayPlaylist, setReplayPlaylist] = useState<SpotifyPlaylist | null>(null);
     const [dancePlaylist, setDancePlaylist] = useState<SpotifyPlaylist | null>(null);
     const [error, setError] = useState<string | null>(null);
-    
+
+    const [ninetysPreviews, setNinetysPreviews] = useState<Deezer[]>([]);
+    const [twoThousandsPreviews, setTwoThousandsPreviews] = useState<Deezer[]>([]);
+    const [tensPreviews, setTensPreviews] = useState<Deezer[]>([]);
+    const [replayPreviews, setReplayPreviews] = useState<Deezer[]>([]);
+    const [dancePreviews, setDancePreviews] = useState<Deezer[]>([]);
+
+    async function fetchPreviews(playlist: SpotifyPlaylist, previews: (data: Deezer[]) => void) {
+        const newPreviews: Deezer[] = []
+        if (playlist?.items) 
+            for (const item of playlist.items) {
+                const track = item.track.name;
+                const artist = item.track.artists[0].name;
+                const album = item.track.album.name
+                console.log('Name:', track)
+                try {
+                    const res = await fetch(`/api/spotify/deezer?artist=${artist}&track=${track}&album=${album}`);
+                    const audio = await res.json();
+                    newPreviews.push({title: track, audio: audio, artist: artist, album: album});
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+        previews(newPreviews)
+    }
+
     useEffect(() => {
         let isMounted = true
-        async function fetchPlaylist(playlist_id: string, playlistName: string, playlist: (data: SpotifyPlaylist) => void){
+        async function fetchPlaylist(playlist_id: string, playlistName: string, playlist: (data: SpotifyPlaylist) => void, previews: (data: Deezer[]) => void){
             console.log('fetchPlaylist called');
             const cached = sessionStorage.getItem(playlistName)
             if(!cached){
@@ -72,6 +97,7 @@ export default function Playlist() {
                     else{
                         playlist(playlistData);
                         sessionStorage.setItem(playlistName, JSON.stringify(playlistData))
+                        fetchPreviews(playlistData, previews)
                     }
                     
                 } catch (err) {
@@ -87,56 +113,17 @@ export default function Playlist() {
                 else{
                     playlist(JSON.parse(cached) as SpotifyPlaylist);
                     sessionStorage.setItem(playlistName, cached)
+                    fetchPreviews(JSON.parse(cached), previews)
                 }
             }
         }
-        fetchPlaylist('3Lg4q5MNWK8S88kys3xUpW', '80s/90s', setNinetysPlaylist)
-        fetchPlaylist('76ZcBZaDVdQzFagWDPnfJV', '2000s', setTwoThousandsPlaylist)
-        fetchPlaylist('0n4SwmoL5haRE6DwTtuEEl', '2010s', setTensPlaylist)
-        fetchPlaylist('41WOgAwM4nT0EEkbPT6JhY', 'Replay', setReplayPlaylist)
-        fetchPlaylist('0hJlXXbgjvoprGYatkIPR0', 'Dance', setDancePlaylist)
+        fetchPlaylist('3Lg4q5MNWK8S88kys3xUpW', '80s/90s', setNinetysPlaylist, setNinetysPreviews)
+        fetchPlaylist('76ZcBZaDVdQzFagWDPnfJV', '2000s', setTwoThousandsPlaylist, setTwoThousandsPreviews)
+        fetchPlaylist('0n4SwmoL5haRE6DwTtuEEl', '2010s', setTensPlaylist, setTensPreviews)
+        fetchPlaylist('41WOgAwM4nT0EEkbPT6JhY', 'Replay', setReplayPlaylist, setReplayPreviews)
+        fetchPlaylist('0hJlXXbgjvoprGYatkIPR0', 'Dance', setDancePlaylist, setDancePreviews)
         return () => { isMounted = false; };
     }, []);
-
-    const [ninetysPreviews, setNinetysPreviews] = useState<Deezer[]>([]);
-    const [twoThousandsPreviews, setTwoThousandsPreviews] = useState<Deezer[]>([]);
-    const [tensPreviews, setTensPreviews] = useState<Deezer[]>([]);
-    const [replayPreviews, setReplayPreviews] = useState<Deezer[]>([]);
-    const [dancePreviews, setDancePreviews] = useState<Deezer[]>([]);
-
-    useEffect(() => {
-        async function fetchPreviews(playlist: SpotifyPlaylist, previews: (data: Deezer[]) => void) {
-            const newPreviews: Deezer[] = []
-            if (playlist?.items) 
-                for (const item of playlist.items) {
-                    const track = item.track.name;
-                    const artist = item.track.artists[0].name;
-                    const album = item.track.album.name
-                    console.log('Name:', track)
-                    try {
-                        const res = await fetch(`/api/spotify/deezer?artist=${artist}&track=${track}&album=${album}`);
-                        const audio = await res.json();
-                        newPreviews.push({title: track, audio: audio, artist: artist, album: album});
-                        
-                    } catch (err) {
-                        console.log(err)
-                    }
-                }
-            previews(newPreviews)
-        }
-        if (ninetysPlaylist && twoThousandsPlaylist && tensPlaylist && replayPlaylist && dancePlaylist ){
-            if (ninetysPlaylist?.items) 
-                fetchPreviews(ninetysPlaylist, setNinetysPreviews);
-            if (twoThousandsPlaylist?.items) 
-                fetchPreviews(twoThousandsPlaylist, setTwoThousandsPreviews);
-            if (tensPlaylist?.items) 
-                fetchPreviews(tensPlaylist, setTensPreviews);
-            if (replayPlaylist?.items) 
-                fetchPreviews(replayPlaylist, setReplayPreviews);
-            if (dancePlaylist?.items) 
-                fetchPreviews(dancePlaylist, setDancePreviews);
-        }
-    }, [ninetysPlaylist, twoThousandsPlaylist, tensPlaylist, replayPlaylist, dancePlaylist]);
     
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
     const [hasInteracted, setHasInteracted] = useState(false);
