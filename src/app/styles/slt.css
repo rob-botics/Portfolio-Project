@@ -725,7 +725,9 @@ p button:hover {
         height: 32.5dvh;
     }
     .subscribe input { width: 75%; }
-    
+        nav>div:first-child {
+        width: 75%;
+    }
 }
 @media screen and (width <= 670px) {
     .product p, .product2 p {font-size: small;}
