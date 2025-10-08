@@ -725,7 +725,7 @@ p button:hover {
         height: 32.5dvh;
     }
     .subscribe input { width: 75%; }
-        nav>div:first-child {
+    nav > div:first-child {
         width: 75%;
     }
 }
