@@ -11,7 +11,7 @@
     --primary-color: darkgreen;
     --secondary-color: #25ad25;
     --bg-img: url(/img/forest.webp);
-    --bg-img-mobile: url(/img/forest-mobile.jpg);
+    --bg-img-mobile: url(/img/forest-mobile2.jpg);
     --slider-img0: url(/img/forestPhotos/img0.JPG);
     --slider-img1: url(/img/forestPhotos/img1.jpg);
     --slider-img2: url(/img/forestPhotos/img2.jpg);
@@ -1072,7 +1072,6 @@ to {
 }
 @media screen and (max-width: 450px) {
     body{
-        background-size: cover;
         background-image: var(--bg-img-mobile)        ;
     }
     .headshot{width: 325px; height: 325px;}
