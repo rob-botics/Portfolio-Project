@@ -994,7 +994,8 @@ to {
         height: 350px;
     }
     .map{
-        width: 500px;
+        width: 500px; 
+        padding: 10px;
         height: 333.34px;
     }
     .track-info p{ max-width: 175px; }
@@ -1070,7 +1071,10 @@ to {
     h3{font-size: 20px;}
 }
 @media screen and (max-width: 450px) {
-    body{background-image: var(--bg-img-mobile);}
+    body{
+        background-size: cover;
+        background-image: var(--bg-img-mobile)        ;
+    }
     .headshot{width: 325px; height: 325px;}
     .select{width: 100px;}
     option{padding: 12.5px;}
@@ -1092,7 +1096,10 @@ to {
         text-align: start;
      }
      address{font-size: x-small;}
-    .trending-media {width: 95%;}
+    .trending-media {
+        width: 95%;
+        padding: 0;
+    }
     .playlist-info{min-width: 55%;}
     .popup-container img {width: 42.5%;}
     .popup-container span {font-size: small;}
