@@ -11,7 +11,7 @@
     --primary-color: darkgreen;
     --secondary-color: #25ad25;
     --bg-img: url(/img/forest.webp);
-    --bg-img-mobile: url(/img/forest-mobile2.1.jpg);
+    --bg-img-mobile: url(/img/forest-mobile2.jpg);
     --slider-img0: url(/img/forestPhotos/img0.JPG);
     --slider-img1: url(/img/forestPhotos/img1.jpg);
     --slider-img2: url(/img/forestPhotos/img2.jpg);
@@ -53,8 +53,7 @@
 /* End of Themes */
 
 html, body{
-    height: 100dvh;
-    max-height: 100%;
+    min-height: 100%;
     color: whitesmoke;
 }
 h1{
@@ -80,6 +79,7 @@ address{
 audio{display: none;}
 body{
     user-select: none;
+    position: relative;
     margin: 0 0 0 205px;
     transition: 1s ease;
     background-size: 100% 100%; 
@@ -1072,11 +1072,14 @@ to {
     .yt-clip {width: 100%;}
 }
 @media screen and (max-width: 450px) {
-    body {
-        margin: 0;
-        background-image: var(--bg-img-mobile);
+    body{
+        background-image: var(--bg-img-mobile)        ;
     }
-
+    main.content-wrapper{
+        height: 100vh;
+        overflow-y: scroll; 
+        -webkit-overflow-scrolling: touch; 
+    }
     .headshot{width: 325px; height: 325px;}
     .select{width: 100px;}
     option{padding: 12.5px;}

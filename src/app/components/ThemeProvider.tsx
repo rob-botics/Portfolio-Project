@@ -91,7 +91,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           {mounted && isMobile && <input type='checkbox' checked={sidebar} onChange={toggleSidebar} id='bars'/>}
           <Sidebar themeChanger={themeChanger} toggle={toggleSidebar} theme={theme}/>
           {mounted && isMobile && <label htmlFor="bars"><FontAwesomeIcon icon={"fa-solid fa-bars-staggered" as IconProp} className='bars' size='lg'/></label>}
-          {children} 
+          <main className='content-wrapper'>
+            {children}
+          </main> 
           <Footer/>
         </>
       }
