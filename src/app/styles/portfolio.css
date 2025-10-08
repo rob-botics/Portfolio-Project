@@ -1072,9 +1072,20 @@ to {
     .yt-clip {width: 100%;}
 }
 @media screen and (max-width: 450px) {
-    body{
-        background-image: var(--bg-img-mobile)        ;
+    body {
+        user-select: none;
+        position: relative;
+        margin: 0;
+        transition: 1s ease;
+
+        background-image: var(--bg-img-mobile);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: scroll; /* fallback for mobile */
+        background-blend-mode: multiply;
     }
+
     .headshot{width: 325px; height: 325px;}
     .select{width: 100px;}
     option{padding: 12.5px;}
