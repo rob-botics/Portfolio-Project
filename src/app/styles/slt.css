@@ -680,10 +680,10 @@ p button:hover {
 }
 @media screen and (width <= 968px) {
     .product p, .product2 p { font-size: 12.5px; }
-    .login { width: 75%; }
 }
 @media screen and (width <= 880px) {
     .product img, .product2 img { width: 150px;}
+    .login { width: 75%; }
 }
 @media screen and (width <= 775px) {
     .third{order: 3;}
