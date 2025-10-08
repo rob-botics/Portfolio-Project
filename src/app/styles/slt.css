@@ -708,6 +708,7 @@ p button:hover {
         font-size: large;
     }
     .home-menu div { padding: 7.5px; }
+    .cart-component {left: -275px;}
     .products {
         gap: .5rem;
         display: grid;
@@ -789,7 +790,10 @@ p button:hover {
     .footer-content + p {font-size: 11.25px;}
     
     .slt-flip-card-front, .slt-flip-card-back { height: 225px};
-    .cart-component {width: 275px;}
+    .cart-component {
+        left: -200px;
+        width: 275px;
+    }
     .slt-aside {display: none;}
     .home-menu img { border: 5px solid whitesmoke; }
     .header-img1 p, .header-img2 p, .header-img3 p {
