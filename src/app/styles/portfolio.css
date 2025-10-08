@@ -64,7 +64,7 @@ h1{
 h2{ margin: 5px;}
 h3{
     margin: 5px 0;
-    font-size: 26px;
+    font-size: 22.5px;
     letter-spacing: .1rem;
     font-family: var(--font-primary);
 }
@@ -961,7 +961,6 @@ to {
 @media screen and (max-width: 1048px) {
     .musician-name{display: none;}
     .yt-clip {width: 725px; }
-    h3{font-size: 22.5px}
 }
 @media screen and (max-width: 1024px) {
     .slider-container, .slider-container2{width: 60%;}
