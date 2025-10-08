@@ -29,8 +29,8 @@ const text: React.CSSProperties = {
 }
 const img: React.CSSProperties = {
   margin: 'auto',
-  width: '250px',
-  height: '250px',
+  width: '160px',
+  height: '160px',
   borderRadius: '8px',
 }
 
@@ -40,7 +40,7 @@ const promo: React.CSSProperties = {
   textAlign: 'center',
   borderRadius: "8px",
   backgroundColor: '#ececec',
-  fontFamily: "'M PLUS Rounded 1c'",
+  fontFamily: "'M PLUS Rounded 1c', arial",
 }
 
 const social: React.CSSProperties = {
@@ -52,30 +52,20 @@ const social: React.CSSProperties = {
   backgroundColor: 'rgba(231, 84, 128)'
 }
 
+const imgText: React.CSSProperties = {
+  width: '100%',
+  padding: '7.5px 0',
+  fontWeight: 'bold',
+  color: 'whitesmoke',
+  textAlign: 'center',
+  display: 'inline-block',
+  fontFamily: "'Indie Flower', cursive"
+}
 const Email = ({firstName}: WelcomeEmailProps) => {
   return (
     <Html lang="en" dir="ltr">
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet"/>
-        <style>
-          {`
-            .img-text{
-              width: 100%;
-              padding: 7.5px 0;
-              font-weight: bold;
-              color: whitesmoke;
-              text-align: center;
-              display: inline-block;
-              font-family: 'Indie Flower', cursive
-            }
-            @media only screen and (max-width: 450px) {
-              .img {
-                max-width: 160px;
-                max-height: 160px;
-              }
-            }
-          `}
-        </style>
       </Head>
       <Body style={body}>
         <Heading style={title}>Welcome {firstName} To Sweet Little Things Newletters! </Heading>
@@ -88,29 +78,29 @@ const Email = ({firstName}: WelcomeEmailProps) => {
         <Section>
             <Row >
               <Column>
-                <span className="img-text">Cheesecakes</span>
+                <span style={imgText}>Cheesecakes</span>
                 <Link href="#">
-                  <Img className="img" style={img} src={'https://images.squarespace-cdn.com/content/v1/5255aaa1e4b00705c7fcccd8/1616081972864-PXBQOJRN1ZI9A4DYKFG1/Mini+Cheese+cakes.jpg'}/>
+                  <Img style={img} src={'https://images.squarespace-cdn.com/content/v1/5255aaa1e4b00705c7fcccd8/1616081972864-PXBQOJRN1ZI9A4DYKFG1/Mini+Cheese+cakes.jpg'}/>
                 </Link>
               </Column>
               <Column>
-                <span className="img-text">Cakes</span>
+                <span style={imgText}>Cakes</span>
                 <Link href="#">
-                  <Img className="img" style={img} src={'https://i.pinimg.com/736x/c7/3b/c8/c73bc804b5f3f99cfb96d93374391929.jpg'}/>
+                  <Img style={img} src={'https://i.pinimg.com/736x/c7/3b/c8/c73bc804b5f3f99cfb96d93374391929.jpg'}/>
                 </Link>
               </Column>
             </Row><br/>
             <Row >
               <Column>
-                <span className="img-text">Cupcakes</span>
+                <span style={imgText}>Cupcakes</span>
                 <Link href="#">
-                  <Img className="img" style={img} src={'https://www.glorioustreats.com/wp-content/uploads/2024/05/smore-cupcakes-square.jpeg'}/>
+                  <Img style={img} src={'https://www.glorioustreats.com/wp-content/uploads/2024/05/smore-cupcakes-square.jpeg'}/>
                 </Link>
               </Column>
               <Column>
-                <span className="img-text">Jellos</span>
+                <span style={imgText}>Jellos</span>
                 <Link href="#">
-                  <Img className="img" style={img} src={'https://amandascookin.com/wp-content/uploads/2021/12/Broken-Glass-Jello-RC-SQ.jpg'}/>
+                  <Img style={img} src={'https://amandascookin.com/wp-content/uploads/2021/12/Broken-Glass-Jello-RC-SQ.jpg'}/>
                 </Link>
               </Column>
             </Row>
@@ -125,17 +115,16 @@ const Email = ({firstName}: WelcomeEmailProps) => {
                 <Row style={{width:'5%'}}>
                   <Column>
                     <Link href="https://www.linkedin.com/in/robert-a-morrison">
-                      <Img style={{width: '35px', cursor: 'pointer'}} src={'https://img.icons8.com/ios11/200/FFFFFF/linkedin.png'}/>
+                      <Img style={{width: '50px', cursor: 'pointer'}} src={'https://img.icons8.com/ios11/200/FFFFFF/linkedin.png'}/>
                     </Link>
                   </Column>
                   <Column>
                     <Link href="https://github.com/rob-botics/">
-                      <Img style={{width: '35px', cursor: 'pointer'}} src={'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png'}/>
+                      <Img style={{width: '50px', cursor: 'pointer'}} src={'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png'}/>
                     </Link>
                   </Column>
                 </Row>
-              </Column>
-              
+              </Column>              
             </Row>
         </Section>
       </Body>

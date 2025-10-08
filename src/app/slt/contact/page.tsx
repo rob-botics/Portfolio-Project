@@ -1,7 +1,7 @@
+import "@/app/styles/slt.css";
 import { PageWrapper } from "@/app/components/PageWrapper"
 
 const Contact = () => {
-
     return(
         <PageWrapper>
             <div className="slt-contact-container slt-secondary-bg">

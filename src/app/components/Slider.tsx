@@ -42,13 +42,13 @@ const Slider = ({page}: SliderProps) => {
                 grabCursor={true}
                 effect="coverflow"
                 centeredSlides={true}
-                autoplay={{ delay: 10000 }} 
+                // autoplay={{ delay: 10000 }} 
                 pagination={{ clickable: true }}     
                 modules={[Autoplay, Pagination, EffectCoverflow]}
             >
                 <SwiperSlide className='header-img1'>
                     <p>
-                        <strong style={{fontSize: 'xx-large', lineHeight: '2.25rem'}}>Shake up your sweet tooth with a Cupquake of Flavor!</strong><br/> Craving something sweet? Indulge in our
+                        <strong>Shake up your sweet tooth with a Cupquake of Flavor!</strong><br/> Craving something sweet? Indulge in our
                         handcrafted cupcakes — fluffy, moist, and topped with irresistible buttercream. Perfect for parties, gifts, or a well-deserved treat.<br/><br/>
                         <button>Order Now!</button>
                     </p>

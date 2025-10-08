@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 //npm instal react-email @react-email/button @react-email/html
 'use client'
-import "../styles/slt.css";
+import "@/app/styles/slt.css";
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import Slider from '../components/Slider'
@@ -36,6 +36,7 @@ const Home = () => {
             if(!welcomeRes.ok) 
                 throw new Error('Subscription Failed. Try again!');
             else {
+                email = ''
                 alert('You Have Successfully Subscribed')
                 setSubscribe(false)
             }
@@ -46,6 +47,7 @@ const Home = () => {
             setError(true)
         }
     }
+    
     return(
         <PageWrapper>
             <main>
@@ -106,7 +108,7 @@ const Home = () => {
                          {error && <p className="error">please enter a valid email address</p>}
                         <div className='subscribe'>
                             <input ref={ emailRef } onBlur={() => {checkEmail(emailRef.current?.value as string)}} type='text' placeholder='Email'></input>
-                            <button onClick={() => handleSubscribe('Jayla', emailRef.current?.value)}>Subcribe</button>
+                            <button onClick={() => handleSubscribe('New Customer', emailRef.current?.value)}>Subcribe</button>
                         </div>
                     </div>
                 </section>

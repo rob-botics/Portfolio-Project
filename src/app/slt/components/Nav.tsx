@@ -1,14 +1,44 @@
+/* eslint-disable @next/next/no-img-element */
+'use client'
 import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { useCart } from '@/app/slt/components/CartProvider'
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import Link from 'next/link'
+import { useState } from 'react'
 library.add(fas, far, fab)
 
+type Products = {
+    id: string;
+    price: string;
+    desc: string;
+    img: string;
+    quantity: number
+}
 const Nav = () => {
+    const { state } = useCart();
+    const cartItems = state.items;
+    const { dispatch } = useCart();
+    const [isCart, setIsCart] = useState(false)
+    const cartCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
+
+    const handleAddItem = (products: Products[], productName: string) => {
+        console.log("Object: ",products)
+        const product = products.find(product => product.id === productName) as Products
+        console.log('Prod: ', product)
+        dispatch({ type: 'ADD_ITEM', payload: product });
+    }
+    const handleSubtractItem = (products: Products[], productName: string) => {
+        const product = products.find(product => product.id === productName) as Products
+
+        if(product.quantity > 1)
+            dispatch({ type: 'SUBTRACT_ITEM', payload: product });
+        else
+            dispatch({ type: 'REMOVE_ITEM', payload: product.id });
+    }
     return(
         <>            
             <div className="wave-top">
@@ -24,8 +54,39 @@ const Nav = () => {
                         <Link href='/slt/contact' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-user" as IconProp} size='xl'/>Contact</span></Link>
                     </div>
                     <div>
-                        <FontAwesomeIcon className='cart' icon={"fa-solid fa-cart-shopping" as IconProp} size='xl'/>
-                        <span className='cart-quantity'>0</span>
+                       <div className='cart-container'>
+                            <span className='cart' onClick={() => setIsCart(prev => !prev)}><FontAwesomeIcon icon={"fa-solid fa-cart-shopping" as IconProp} size='xl'/></span>
+                            <span className='cart-quantity' onClick={() => setIsCart(prev => !prev)}>{cartCount}</span>
+                           
+                       </div>
+                        <div className={`cart-component ${isCart === true ? 'cart-show' : 'cart-hide'}`}>
+                            <ul className="cart-list">
+                                {cartItems.length === 0 ? <p>Your cart is empty.</p>
+                                :cartItems.map((item, index) => (
+                                    <li key={index} className="cart-item">
+                                        <div className="cart-item-info">
+                                            <img src={item.img} alt={item.id} width={50} />
+                                            <p>{item.id}</p>
+                                            <p>Price: ${item.price}</p>
+                                            <p>Quantity: {item.quantity}</p>
+                                        </div>
+                                        <div className='subtotal'>
+                                            <div className='plus-minus'>
+                                                <FontAwesomeIcon onClick={() => handleSubtractItem(state.items, item.id)} icon={"fa-solid fa-minus" as IconProp} />
+                                                <FontAwesomeIcon onClick={() => handleAddItem(state.items, item.id)} icon={"fa-solid fa-plus" as IconProp} />
+                                            </div>
+                                            <p>Subtotal: ${(parseFloat(item.price) * item.quantity).toFixed(2)}</p>
+                                        </div>
+                                        <hr/>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className="cart-total">
+                                Total: ${cartItems.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)}
+                                <button>Checkout</button>
+                            </div>
+                        </div>
+                       <span><Link href='/slt/login'>Login</Link></span>
                     </div>
                 </nav>
             </div>

@@ -7,6 +7,7 @@ import LoadingScreen from './LoadingScreen';
 import { usePathname } from 'next/navigation';
 import SLTFooter from '../slt/components/Footer'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { CartProvider } from '../slt/components/CartProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { createContext, useEffect, useState, ReactNode } from 'react';
@@ -29,7 +30,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('forest');
   const themeChanger = (theme: Theme) => {setTheme(theme)}
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
   const toggleSidebar = () => {
     setSidebar(prev => !prev);
   };
@@ -76,10 +77,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       <LoadingScreen loaded={!isLoaded}/>
       <ThemeContext.Provider value={theme}>
       {pathname.includes('slt') ? <>
-          <Nav/>
-          <Link href='/slt'><img className='logo' src={'/img/slt/logo.jpg'} alt='slt logo'/></Link>
-          {children}
-          <SLTFooter/>
+          <CartProvider>
+            {mounted && isMobile && <input type='checkbox' checked={sidebar} onChange={toggleSidebar} id='bars'/>}
+            {mounted && isMobile && <label htmlFor="bars"><FontAwesomeIcon icon={"fa-solid fa-bars-staggered" as IconProp} className='bars' size='xl'/></label>}
+            {mounted && isMobile && <label htmlFor="bars"><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} className='xmark' size='xl'/></label>}
+            <Nav/>
+            <Link href='/slt'><img className='logo' src={'/img/slt/logo.jpg'} alt='slt logo'/></Link>
+            {children}
+            <SLTFooter/>
+          </CartProvider>
         </>
         : <>
           {mounted && isMobile && <input type='checkbox' checked={sidebar} onChange={toggleSidebar} id='bars'/>}
