@@ -80,7 +80,7 @@ audio{display: none;}
 body{
     left: 0; top: 0;
     user-select: none;
-    position: fixed;
+    position: relative;
     margin: 0 0 0 205px;
     transition: 1s ease;
     background-size: 100% 100%; 
