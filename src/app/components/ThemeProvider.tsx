@@ -92,9 +92,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           <Sidebar themeChanger={themeChanger} toggle={toggleSidebar} theme={theme}/>
           {mounted && isMobile && <label htmlFor="bars"><FontAwesomeIcon icon={"fa-solid fa-bars-staggered" as IconProp} className='bars' size='lg'/></label>}
           <main className='content-wrapper'>
-            {children}
+            {children}            
+            <Footer/>
           </main> 
-          <Footer/>
         </>
       }
       </ThemeContext.Provider>
