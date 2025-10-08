@@ -534,7 +534,7 @@ ul::-webkit-scrollbar {width: 10px;}
     font-family: var(--font-primary);
     transition: font-size .5s ease-in-out;
 }
-.full-playlist:hover{font-size: 15px};
+.full-playlist:hover{font-size: 15px}
 label{transition: .5s;}
 svg[data-name='pause-play']{
     transition: .5s;
