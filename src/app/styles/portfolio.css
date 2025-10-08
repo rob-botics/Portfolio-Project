@@ -1073,17 +1073,9 @@ to {
 }
 @media screen and (max-width: 450px) {
     body {
-        user-select: none;
-        position: relative;
         margin: 0;
-        transition: 1s ease;
-
+        min-height: -webkit-fill-available;
         background-image: var(--bg-img-mobile);
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: scroll; /* fallback for mobile */
-        background-blend-mode: multiply;
     }
 
     .headshot{width: 325px; height: 325px;}
