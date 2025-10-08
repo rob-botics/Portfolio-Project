@@ -78,11 +78,16 @@ address{
 }
 audio{display: none;}
 body{
-    background-attachment: fixed;
-    background-blend-mode: multiply;
-    background-repeat: no-repeat;
+    left: 0; top: 0;
+    user-select: none;
+    position: fixed;
+    margin: 0 0 0 205px;
+    transition: 1s ease;
+    background-size: 100% 100%; 
     background-position: center;
-    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;  
     background-image: var(--bg-img);
 }
 .loadingScreen{
