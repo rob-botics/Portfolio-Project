@@ -759,6 +759,7 @@ p button:hover {
     }
     .xmark{display: none;}
     .bars{display: inline-block;}
+    nav > div:first-child {justify-content: space-evenly;}
     #bars:checked ~ label .bars { display: none; }
     #bars:checked ~ label .xmark { display: inline-block; }
     #bars:checked ~ .wave-top nav > div:first-child {left: 0;}
