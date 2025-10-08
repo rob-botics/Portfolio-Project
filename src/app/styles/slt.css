@@ -784,10 +784,6 @@ p button:hover {
     .slt-flip-card-front, .slt-flip-card-back { height: 225px};
     .cart-component {width: 275px;}
     .slt-aside {display: none;}
-    .wave-top .wave{
-        height: 85px;
-        width: calc(150% + 1.3px);
-    }
     .home-menu img { border: 5px solid whitesmoke; }
     .header-img1 p, .header-img2 p, .header-img3 p {
         width: 75%;
@@ -799,13 +795,6 @@ p button:hover {
         height: 85px;
         width: calc(150% + 1.3px);
     }
-    .products {
-        gap: .5rem;
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(2, 50%);
-    }
-    .product, .product2 {width: auto;}
 }
 @media screen and (width <= 376px) {
     .logo {top: 8.25% }
