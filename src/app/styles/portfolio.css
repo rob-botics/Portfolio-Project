@@ -1069,6 +1069,7 @@ to {
 }
 @media screen and (max-width: 620px) {
     h3{font-size: 20px;}
+    .yt-clip {width: 100%;}
 }
 @media screen and (max-width: 450px) {
     body{
