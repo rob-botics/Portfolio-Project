@@ -6,6 +6,7 @@ import Slider from "./components/Slider";
 import { PageWrapper } from './components/PageWrapper';
 import { useInView } from "react-intersection-observer";
 import React, { useEffect,useRef,useState } from "react";
+import LazyRenderer from "./components/LazyRenderer";
 
 type HomeProps = {theme: string}
 
@@ -15,13 +16,13 @@ export default function Home ({theme}: HomeProps) {
       src: string
       exp: number
     }
-    const introRef = useRef<HTMLElement | null>(null)
-    const skillsRef = useRef<HTMLElement | null>(null)
-    const projectsRef = useRef<HTMLElement | null>(null)
+    // const introRef = useRef<HTMLElement | null>(null)
+    // const skillsRef = useRef<HTMLElement | null>(null)
+    // const projectsRef = useRef<HTMLElement | null>(null)
 
-    const { ref: introInViewRef, inView: introInView } = useInView({ threshold: 0.1 });
-    const { ref: skillsInViewRef, inView: skillsInView } = useInView({ threshold: 0.1 });
-    const { ref: projectsInViewRef, inView: projectsInView } = useInView({ threshold: 0.1 });
+    // const { ref: introInViewRef, inView: introInView } = useInView({ threshold: 0.1 });
+    // const { ref: skillsInViewRef, inView: skillsInView } = useInView({ threshold: 0.1 });
+    // const { ref: projectsInViewRef, inView: projectsInView } = useInView({ threshold: 0.1 });
     
     const [headshotFade, setHeadshotFade] = useState(false);
     const skillImages: Skill[] = [
@@ -47,14 +48,14 @@ export default function Home ({theme}: HomeProps) {
 
     return(
         <PageWrapper>
-            <section style={{display: 'block'}} className={`${introInView ? "fade-in" : "landing-hidden"}`} ref={(element) => { introRef.current = element; introInViewRef(element); }}>
-                {introInView && <>
+            <section style={{display: 'block'}}>
+                <LazyRenderer>
                     <div className={`headshot ${headshotFade ? 'fade' : ''}`}><Slider page={'home'}/></div>
                     <div className="landing-title"><h1>Welcome To A Robert Morrison Web Production</h1></div> 
-                </>}
+                </LazyRenderer>
             </section>
-            <section  className={`${skillsInView ? "fade-in" : "landing-hidden"}`} ref={(element) => { skillsRef.current = element; skillsInViewRef(element); }}>
-                {skillsInView && <>
+            <section>
+                <LazyRenderer>
                     <div className="section-title "><h2 >Skills</h2></div>
                     <div className="skill-container">
                         {skillImages.map((img, index:number) => (
@@ -87,7 +88,7 @@ export default function Home ({theme}: HomeProps) {
                             </div>
                         ))}
                     </div>
-                </>}
+                </LazyRenderer>    
             </section>
             <div style={{position: 'relative'}}>
                 <svg className="wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -95,8 +96,7 @@ export default function Home ({theme}: HomeProps) {
                 </svg>
             </div>
             <section className={`secondary-bg`}>
-                <div className={`${projectsInView ? "fade-in" : "landing-hidden"}`} ref={(element) => { projectsRef.current = element; projectsInViewRef(element); }}>
-                    {projectsInView && <>
+                <LazyRenderer>
                     <div className="section-title "><h2 >Projects</h2></div>
                     <div className="home-projects-container">
                         <div className="home-projects"><h3>Coming Soon!</h3></div>
@@ -106,8 +106,7 @@ export default function Home ({theme}: HomeProps) {
                         </div>
                         <div className="home-projects"><h3>Coming Soon!</h3></div>
                     </div>
-                </>}
-                </div>
+                </LazyRenderer>
             </section>
         </PageWrapper>
     )

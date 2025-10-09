@@ -48,17 +48,6 @@ type PopularMedia = {
 }
 const About = () => {
     const dialogRefs = useRef<Record<string, HTMLDialogElement | null>>({});
-    const showRef = useRef<HTMLElement | null>(null)
-    const movieRef = useRef<HTMLElement | null>(null)
-    const { ref: showInViewRef, inView: showsInView } = useInView({ 
-        threshold: 0.1,
-        rootMargin: "75% 0px"
-    });
-    const { ref: moviesInViewRef, inView: moviesInView } = useInView({ 
-        threshold: 0.1,
-        rootMargin: "75% 0px"
-    });
-
     const tvshows: VideoItem[] = [
         {id: 'gumball', img: '/img/media/gumball.jpg', title: 'The Amazing World of Gumball', iframe: <iframe loading="lazy" className="yt-clip" src="https://www.youtube.com/embed/TiHD0r3az9A?start=57" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>},
         {id: 'pit', img: '/img/media/thepitt.jpg', title: 'The Pitt', iframe: <iframe loading="lazy" className="yt-clip" src="https://www.youtube.com/embed/ufR_08V38sQ?si=z24eK3eDELZbCwi3" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>},
