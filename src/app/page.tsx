@@ -48,12 +48,13 @@ export default function Home ({theme}: HomeProps) {
 
     return(
         <PageWrapper>
-            <section style={{display: 'block'}}>
+            
                 <LazyRenderer>
-                    <div className={`headshot ${headshotFade ? 'fade' : ''}`}><Slider page={'home'}/></div>
-                    <div className="landing-title"><h1>Welcome To A Robert Morrison Web Production</h1></div> 
+                    <section style={{display: 'block'}}>
+                        <div className={`headshot ${headshotFade ? 'fade' : ''}`}><Slider page={'home'}/></div>
+                        <div className="landing-title"><h1>Welcome To A Robert Morrison Web Production</h1></div> 
+                    </section>
                 </LazyRenderer>
-            </section>
             <section>
                 <LazyRenderer>
                     <div className="section-title "><h2 >Skills</h2></div>

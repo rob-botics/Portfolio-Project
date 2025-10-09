@@ -738,8 +738,18 @@ p button:hover {
         width: 75%;
         justify-content: start;
     }
+    .instagram-grid {
+        height: 75%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .social-img {width: 125px;}
+    .instagram-grid span {font-size: large;}
 }
 @media screen and (width <= 670px) {
+    .logo { 
+        top: 7.5%;
+        width: 60px; 
+    }
     .product p, .product2 p {font-size: small;}
     nav > div:last-child {
         right: 10px;
@@ -786,10 +796,6 @@ p button:hover {
     }
 }
 @media screen and (width <= 450px) {
-    .logo { 
-        top: 6.5%;
-        width: 60px; 
-    }
     .login, .slt-contact-container p, .slt-contact-container ul { width: 90%;}
     ::-webkit-scrollbar {width: 0px;}
     .footer-content + p {font-size: 11.25px;}
@@ -811,7 +817,4 @@ p button:hover {
         height: 85px;
         width: calc(150% + 1.3px);
     }
-}
-@media screen and (width <= 376px) {
-    .logo {top: 8.25% }
 }

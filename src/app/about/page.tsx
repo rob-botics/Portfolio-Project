@@ -202,7 +202,7 @@ const About = () => {
                         <div className="paragraph3">
                             <p>
                                 Living with Jax and Quinn is like sharing an apartment with a retired mob boss and his unhinged intern. Jax, my creamy tabby king, walks
-                                around like he owns the deed to every room. The orange-and-white gentleman, Jax, refined, composed, and has perfected the art of lying down 
+                                around like he owns the deed to every room. The orange-and-white gentleman is refined, composed, and has perfected the art of lying down 
                                 dramatically in sunbeams like he’s starring in his own slow-motion indie film. He judges everything I do—from how I open treats to my sock 
                                 choices—with the kind of silent authority that says, “You could be doing better.” Meanwhile, the little chaos goblin (aka the tiny 
                                 tortoiseshell/calico hurricane mix), Quinn, is a walking serotonin factory with zero impulse control. She zooms, screams, attacks invisible
