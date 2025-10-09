@@ -81,7 +81,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
             {mounted && isMobile && <input type='checkbox' checked={sidebar} onChange={toggleSidebar} id='bars'/>}
             {mounted && isMobile && <label htmlFor="bars"><FontAwesomeIcon icon={"fa-solid fa-bars-staggered" as IconProp} className='bars' size='xl'/></label>}
             {mounted && isMobile && <label htmlFor="bars"><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} className='xmark' size='xl'/></label>}
-            <Nav/>
+            <Nav mobile={isMobile} closeSidebar={() => setSidebar(false)} />
             <Link href='/slt'><img className='logo' src={'/img/slt/logo.jpg'} alt='slt logo'/></Link>
             {children}
             <SLTFooter/>
@@ -89,7 +89,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         </>
         : <>
           {mounted && isMobile && <input type='checkbox' checked={sidebar} onChange={toggleSidebar} id='bars'/>}
-          <Sidebar themeChanger={themeChanger} toggle={toggleSidebar} theme={theme}/>
+          <Sidebar themeChanger={themeChanger} toggle={toggleSidebar} theme={theme} mobile={isMobile} closeSidebar={() => setSidebar(false)}/>
           {mounted && isMobile && <label htmlFor="bars"><FontAwesomeIcon icon={"fa-solid fa-bars-staggered" as IconProp} className='bars' size='lg'/></label>}
           <main className='content-wrapper'>
             {children}            

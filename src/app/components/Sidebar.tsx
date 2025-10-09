@@ -17,9 +17,11 @@ type SidebarProps = {
   theme: Theme;
   themeChanger: (theme: Theme) => void;
   toggle: () => void;
+  mobile: boolean
+  closeSidebar: () => void
 };
 
-export default function Sidebar ({ themeChanger, theme, toggle }: SidebarProps){
+export default function Sidebar ({ themeChanger, theme, toggle, mobile, closeSidebar }: SidebarProps){
     const pathname = usePathname();
     const [isActive, setIsActive] = useState('')
     const [sidebarCompress, setSidebarCompress] = useState(false)
@@ -48,15 +50,19 @@ export default function Sidebar ({ themeChanger, theme, toggle }: SidebarProps){
 
         body.classList.toggle('body-compress')
     }
+    const handleMobile = () => {
+        if(mobile === true)
+            if (mobile) closeSidebar();
+    }
     return(
         <>
         <aside className={`sidebar ${sidebarCompress ? 'sidebar-animation' : ''}`}>
            {mounted && !isMobile && <FontAwesomeIcon icon={"fa-regular fa-circle-right" as IconProp} className={`arrow ${sidebarCompress ? "arrow-animation" : ""}`} onClick={() => handleArrowClick()}/> }
            {mounted && isMobile && <FontAwesomeIcon icon={"fa-solid fa-square-xmark" as IconProp} onClick={() => toggle()} className='x-sb'  size="2xl"/>}
            <ul className="sb-list">
-                <li><Link className={isActive === "/" ? "active-link" : ""} href='/'><FontAwesomeIcon icon={"fa-solid fa-house" as IconProp} /><span className={`nav-text ${sidebarCompress ? "hide" : ""}`}>&nbsp; Home</span></Link></li>
-                <li><Link className={isActive === "/about" ? "active-link" : ""} href='/about'><FontAwesomeIcon icon={"fa-solid fa-circle-user" as IconProp} /><span className={`nav-text ${sidebarCompress ? "hide" : ""}`}>&nbsp; About</span></Link></li>
-                <li><Link className={isActive === "/projects" ? "active-link" : ""} href='/projects'><FontAwesomeIcon icon={"fa-solid fa-cubes" as IconProp} /><span className={`nav-text ${sidebarCompress ? "hide" : ""}`}>&nbsp; Projects</span></Link></li>
+                <li><Link onClick={() => handleMobile()} className={isActive === "/" ? "active-link" : ""} href='/'><FontAwesomeIcon icon={"fa-solid fa-house" as IconProp} /><span className={`nav-text ${sidebarCompress ? "hide" : ""}`}>&nbsp; Home</span></Link></li>
+                <li><Link onClick={() => handleMobile()} className={isActive === "/about" ? "active-link" : ""} href='/about'><FontAwesomeIcon icon={"fa-solid fa-circle-user" as IconProp} /><span className={`nav-text ${sidebarCompress ? "hide" : ""}`}>&nbsp; About</span></Link></li>
+                <li><Link onClick={() => handleMobile()} className={isActive === "/projects" ? "active-link" : ""} href='/projects'><FontAwesomeIcon icon={"fa-solid fa-cubes" as IconProp} /><span className={`nav-text ${sidebarCompress ? "hide" : ""}`}>&nbsp; Projects</span></Link></li>
                 <li className={`theme-changer`}>
                     <FontAwesomeIcon icon={"fa-solid fa-palette" as IconProp} /><span className={`nav-text ${sidebarCompress ? "hide" : ""}`}>&nbsp; Themes</span>
                     <div>

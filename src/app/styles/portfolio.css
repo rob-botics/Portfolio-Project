@@ -161,6 +161,12 @@ section{
   transform: translateY(20px);
   transition: opacity 1s ease-out .5s, transform 1s ease-out .5s;
 }
+.landing-hidden {
+  opacity: 0;
+  height: 100dvh;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out .5s, transform 1s ease-out .5s;
+}
 .hide{display: none;}
 .section-title,.section-title2{
     text-align: center;

@@ -18,7 +18,11 @@ type Products = {
     img: string;
     quantity: number
 }
-const Nav = () => {
+type Mobile = {
+    mobile : boolean
+    closeSidebar: () => void;
+}
+const Nav = ({mobile, closeSidebar}: Mobile) => {
     const { state } = useCart();
     const cartItems = state.items;
     const { dispatch } = useCart();
@@ -39,6 +43,10 @@ const Nav = () => {
         else
             dispatch({ type: 'REMOVE_ITEM', payload: product.id });
     }
+    const handleMobile = () => {
+        if(mobile === true)
+            if (mobile) closeSidebar();
+    }
     return(
         <>            
             <div className="wave-top">
@@ -49,9 +57,9 @@ const Nav = () => {
                 </svg>
                 <nav>
                     <div>
-                        <Link href='/slt' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-house" as IconProp} size='xl'/> Home</span></Link>
-                        <Link href='/slt/menu' className='nav-link'><span><FontAwesomeIcon icon={"fa-solid fa-cake-candles" as IconProp} size='xl'/> Menu</span></Link>
-                        <Link href='/slt/contact' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-user" as IconProp} size='xl'/>Contact</span></Link>
+                        <Link onClick={() => handleMobile()} href='/slt' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-house" as IconProp} size='xl'/> Home</span></Link>
+                        <Link onClick={() => handleMobile()} href='/slt/menu' className='nav-link'><span><FontAwesomeIcon icon={"fa-solid fa-cake-candles" as IconProp} size='xl'/> Menu</span></Link>
+                        <Link onClick={() => handleMobile()} href='/slt/contact' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-user" as IconProp} size='xl'/>Contact</span></Link>
                     </div>
                     <div>
                        <div className='cart-container'>

@@ -47,13 +47,13 @@ export default function Home ({theme}: HomeProps) {
 
     return(
         <PageWrapper>
-            <section style={{display: 'block'}} className={`${introInView ? "fade-in" : "hidden"}`} ref={(element) => { introRef.current = element; introInViewRef(element); }}>
+            <section style={{display: 'block'}} className={`${introInView ? "fade-in" : "landing-hidden"}`} ref={(element) => { introRef.current = element; introInViewRef(element); }}>
                 {introInView && <>
                     <div className={`headshot ${headshotFade ? 'fade' : ''}`}><Slider page={'home'}/></div>
                     <div className="landing-title"><h1>Welcome To A Robert Morrison Web Production</h1></div> 
                 </>}
             </section>
-            <section  className={`${skillsInView ? "fade-in" : "hidden"}`} ref={(element) => { skillsRef.current = element; skillsInViewRef(element); }}>
+            <section  className={`${skillsInView ? "fade-in" : "landing-hidden"}`} ref={(element) => { skillsRef.current = element; skillsInViewRef(element); }}>
                 {skillsInView && <>
                     <div className="section-title "><h2 >Skills</h2></div>
                     <div className="skill-container">
@@ -95,7 +95,7 @@ export default function Home ({theme}: HomeProps) {
                 </svg>
             </div>
             <section className={`secondary-bg`}>
-                <div className={`${projectsInView ? "fade-in" : "hidden"}`} ref={(element) => { projectsRef.current = element; projectsInViewRef(element); }}>
+                <div className={`${projectsInView ? "fade-in" : "landing-hidden"}`} ref={(element) => { projectsRef.current = element; projectsInViewRef(element); }}>
                     {projectsInView && <>
                     <div className="section-title "><h2 >Projects</h2></div>
                     <div className="home-projects-container">
