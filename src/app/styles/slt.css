@@ -8,7 +8,10 @@
     --slt-primary-color: rgba(231, 84, 128,.925);
 }
 /* Home */
-hr{ margin: 0; }
+hr{
+     margin: 0; 
+     color: whitesmoke;
+}
 a,::placeholder{color: whitesmoke;}
 .logo{
     z-index: 1001;
