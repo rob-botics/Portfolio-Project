@@ -30,7 +30,7 @@
     --slider-img1: url(/img/royalPhotos/royal1.jpg);
     --slider-img2: url(/img/royalPhotos/royal2.jpg);
     --slider-img3: url(/img/royalPhotos/royal3.jpg);
-    --slider-img4: url(/img/royalPhotos/royal4.jpg);
+    --slider-img4: url(/img/royalPhotos/royal4.jpg)
     --slider-img5: url(/img/royalPhotos/royal5.jpg);
     --paragraph-bg: rgba(4, 22, 83,.75);
     --bg-before: linear-gradient(to top right, rgba(204, 75, 91,.5),rgba(4, 22, 83,.5) 75%); 
@@ -157,6 +157,7 @@ section{
 }
 .hidden {
   opacity: 0;
+  height: 25dvh;
   transform: translateY(20px);
   transition: opacity 1s ease-out .5s, transform 1s ease-out .5s;
 }
@@ -458,6 +459,7 @@ select,option{cursor: pointer;}
     line-height: 1.5rem;
     align-items: center;
     letter-spacing: .1rem;
+    box-sizing: border-box;
     justify-content: center;
     width: 27.5%; height: 27.5rem;
 }
@@ -934,6 +936,7 @@ to {
         margin: auto;
     }
     .playlist{
+        gap: 1.5rem;
         height: 85dvh;
         flex-direction: column; 
     }
@@ -942,7 +945,6 @@ to {
         width: 100%;
     }
     .playlist-container ul {height: 225px;}
-    .playlist{gap: 2rem;}
     .playlist-header img {
         width: 125px;
         height: 125px;
@@ -964,6 +966,7 @@ to {
 @media screen and (max-width: 1048px) {
     .musician-name{display: none;}
     .yt-clip {width: 725px; }
+    .hidden{height: 105dvh;}
 }
 @media screen and (max-width: 1024px) {
     .slider-container, .slider-container2{width: 60%;}
@@ -1068,7 +1071,7 @@ to {
 @media screen and (max-width: 648px) {
     .playlist-info{min-width: 60%;}
     .track-info p {font-size: x-small;}
-    .paragraph, .paragraph2, .paragraph3 {font-size: x-small;}
+    .paragraph, .paragraph2, .paragraph3 {font-size: small;}
 }
 @media screen and (max-width: 620px) {
     h3{font-size: 20px;}
@@ -1092,6 +1095,7 @@ to {
     .full-playlist{font-size: medium;}
     .playlist-total{font-size: small;}
     .paragraph, .paragraph2, .paragraph3 {
+        width: 100%;
         text-align: justify;
         line-height: 1.15rem;
     }

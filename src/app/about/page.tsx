@@ -57,18 +57,18 @@ const About = () => {
     const animeRef = useRef<HTMLElement | null>(null)
     const mapRef = useRef<HTMLElement | null>(null)
 
-    const { ref: aboutInViewRef, inView: aboutInView } = useInView({ threshold: 0.1, rootMargin: "25% 0px" });
-    const { ref: ffInViewRef, inView: ffInView } = useInView({ threshold: 0, rootMargin: "25% 0px 0px" });
-    const { ref: petsInViewRef, inView: petsInView } = useInView({ threshold: 0, rootMargin: "25% 0px 0px" });
+    const { ref: aboutInViewRef, inView: aboutInView } = useInView({ threshold: 0.1});
+    const { ref: ffInViewRef, inView: ffInView } = useInView({ threshold: 0.1});
+    const { ref: petsInViewRef, inView: petsInView } = useInView({ threshold: 0.1});
     const { ref: songInViewRef, inView: songInView } = useInView({ threshold: 0.1 });
     const { ref: playlistInViewRef, inView: playlistInView } = useInView({ threshold: 0.1 });
     const { ref: showInViewRef, inView: showsInView } = useInView({ 
         threshold: 0.1,
-        rootMargin: "75% 0px"
+        rootMargin: "75% 0px 75% 0px"
     });
     const { ref: moviesInViewRef, inView: moviesInView } = useInView({ 
         threshold: 0.1,  
-        rootMargin: "75% 0px"
+        rootMargin: "75% 0px 75% 0px"
     });
     const { ref: animeInViewRef, inView: animeInView } = useInView({ threshold: 0.1 });
     const { ref: mapInViewRef, inView: mapInView } = useInView({ threshold: 0.1 });
