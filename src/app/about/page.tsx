@@ -64,11 +64,11 @@ const About = () => {
     const { ref: playlistInViewRef, inView: playlistInView } = useInView({ threshold: 0.1 });
     const { ref: showInViewRef, inView: showsInView } = useInView({ 
         threshold: 0.1,
-        rootMargin: "75% 0px 75% 0px"
+        rootMargin: "75% 0px"
     });
     const { ref: moviesInViewRef, inView: moviesInView } = useInView({ 
         threshold: 0.1,  
-        rootMargin: "75% 0px 75% 0px"
+        rootMargin: "75% 0px"
     });
     const { ref: animeInViewRef, inView: animeInView } = useInView({ threshold: 0.1 });
     const { ref: mapInViewRef, inView: mapInView } = useInView({ threshold: 0.1 });

@@ -459,7 +459,6 @@ select,option{cursor: pointer;}
     line-height: 1.5rem;
     align-items: center;
     letter-spacing: .1rem;
-    box-sizing: border-box;
     justify-content: center;
     width: 27.5%; height: 27.5rem;
 }
@@ -930,7 +929,6 @@ to {
 }
 
 @media screen and (max-width: 1148px) {
-    section{padding: 37.5px 0;}
     .slider-container, .slider-container2{
         width: 85%;
         margin: auto;
@@ -1098,6 +1096,7 @@ to {
         width: 100%;
         text-align: justify;
         line-height: 1.15rem;
+        box-sizing: border-box;
     }
     .sb-list li a.active-link { left: -30px;}
     small{font-size: xx-small;}
@@ -1108,10 +1107,19 @@ to {
         text-align: start;
      }
      address{font-size: x-small;}
+     .section-placeholder-large { 
+        min-height: 265dvh;
+        justify-content: start;
+    }
     .trending-media {
         width: 95%;
         padding: 0;
     }
+    .songs{
+        height: 100dvh;
+        overflow-y: scroll;
+    }
+    .playlist{height: 102.5dvh;}
     .playlist-info{min-width: 55%;}
     .popup-container img {width: 42.5%;}
     .popup-container span {font-size: small;}
