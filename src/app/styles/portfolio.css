@@ -141,11 +141,14 @@ body::after{
 }
 section{
     z-index: 10;
+    display: flex;
     transition: .5s;
     padding: 37.5px 0;
     min-height: 100dvh;
     position: relative;
     box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
 }
 .fade-in {
   opacity: 1;
