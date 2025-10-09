@@ -47,7 +47,7 @@ export default function Home ({theme}: HomeProps) {
 
     return(
         <PageWrapper>
-            <section className={`${introInView ? "fade-in" : "hidden"}`} ref={(element) => { introRef.current = element; introInViewRef(element); }}>
+            <section style={{display: 'block'}} className={`${introInView ? "fade-in" : "hidden"}`} ref={(element) => { introRef.current = element; introInViewRef(element); }}>
                 {introInView && <>
                     <div className={`headshot ${headshotFade ? 'fade' : ''}`}><Slider page={'home'}/></div>
                     <div className="landing-title"><h1>Welcome To A Robert Morrison Web Production</h1></div> 
