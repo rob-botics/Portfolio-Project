@@ -194,7 +194,7 @@ section{
 .sidebar { 
     display: flex;
     position: fixed;
-    transition: 1.25s;
+    transition: .5s;
     align-items: center;
     top: 0px; left: 0px;
     width: 205px; height: 100dvh;
@@ -1047,7 +1047,7 @@ to {
         position: relative;
     }
     .landing-title{height: auto;}
-    .sb-list li a.active-link {left: -12px;}
+    .sb-list li {text-align: center;}
     .musician-name{display: none;}
      .bars{
         z-index: 50;
@@ -1104,7 +1104,6 @@ to {
         line-height: 1.15rem;
         box-sizing: border-box;
     }
-    .sb-list li a.active-link { left: -30px;}
     small{font-size: xx-small;}
     td img { width: 75px; }
     th, td { 
