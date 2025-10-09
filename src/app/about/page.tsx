@@ -229,7 +229,7 @@ const About = () => {
                     </div>
                 </LazyRenderer>
             </section> 
-            <div style={{position: 'relative', top: '-50px'}}>
+            <div style={{position: 'relative'}}>
                 <svg className="wave-svg-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fillOpacity="1" d="M0,256L60,224C120,192,240,128,360,101.3C480,75,600,85,720,117.3C840,149,960,203,1080,224C1200,245,1320,235,1380,229.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
                 </svg>
@@ -259,43 +259,99 @@ const About = () => {
                     <path fillOpacity="1" d="M0,192L60,213.3C120,235,240,277,360,282.7C480,288,600,256,720,208C840,160,960,96,1080,74.7C1200,53,1320,75,1380,85.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
                 </svg>
             </div>
-            <section className="section-placeholder-large">
-                <div className={`flex-container ${showsInView ? "fade-in" : "hidden"}`} ref={(element) => { showRef.current = element; showInViewRef(element); }}>
-                    {showsInView && (
-                        <>
-                            <div className="media-favorites">
-                                <div className='section-title2'><h2>Favorite T.V Shows</h2></div>
-                                <div className='tv-shows'>
-                                    {tvshows.map((show, index) => (
-                                        <div className='media' key={show.id}>
-                                            <span>{index + 1}.</span>
-                                            <img
-                                            className='media-img'
-                                            onClick={() => handleOpenClose('open', show.id)}
-                                            src={show.img}
-                                            alt={show.title}
-                                            />
-                                            <dialog
-                                            data-modal
-                                            ref={(dialog) => {(dialogRefs.current[show.id] = dialog)}}
-                                            onClick={(e) => handleOutsideModalClick(e, show.id)}
-                                            >
-                                            {openDialogId === show.id ? show.iframe : ''}
-                                            <FontAwesomeIcon
-                                                icon={"fa-solid fa-square-xmark" as IconProp}
-                                                size="2xl"
-                                                onClick={() => handleOpenClose('close', show.id)}
-                                            />
-                                            </dialog>
-                                        </div>
-                                    ))}
+            <section>
+                <LazyRenderer>
+                    <div className='flex-container'>
+                        <div className="media-favorites">
+                            <div className='section-title2'><h2>Favorite T.V Shows</h2></div>
+                            <div className='tv-shows'>
+                                {tvshows.map((show, index) => (
+                                    <div className='media' key={show.id}>
+                                        <span>{index + 1}.</span>
+                                        <img
+                                        className='media-img'
+                                        onClick={() => handleOpenClose('open', show.id)}
+                                        src={show.img}
+                                        alt={show.title}
+                                        />
+                                        <dialog
+                                        data-modal
+                                        ref={(dialog) => {(dialogRefs.current[show.id] = dialog)}}
+                                        onClick={(e) => handleOutsideModalClick(e, show.id)}
+                                        >
+                                        {openDialogId === show.id ? show.iframe : ''}
+                                        <FontAwesomeIcon
+                                            icon={"fa-solid fa-square-xmark" as IconProp}
+                                            size="2xl"
+                                            onClick={() => handleOpenClose('close', show.id)}
+                                        />
+                                        </dialog>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        {(popularShows?.length ?? 0) > 0 ? (
+                            <div className='trending-media'>
+                                <h2 className='section-title'>Popular Shows To Watch!</h2>
+                                <small>* This section is used to practice integrating APIs. The API used is TMDB API *</small>
+                                <div className="table-container">
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Poster</th>
+                                            <th>Date</th>
+                                            <th>Overview</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {popularShows?.map((show, index) => (
+                                            <tr key={show.id}>
+                                                <td>{index + 1}</td>
+                                                <td><span>{show.name}</span></td>
+                                                <td><img src={show.poster_path ? `https://image.tmdb.org/t/p/w780${show.poster_path}` : 'https://via.placeholder.com/780x439?text=No+Image' } alt={show.title}/></td>
+                                                <td>{show.first_air_date}</td>
+                                                <td>{show.overview}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
-                            {(popularShows?.length ?? 0) > 0 ? (
-                                <div className='trending-media'>
-                                    <h2 className='section-title'>Popular Shows To Watch!</h2>
-                                    <small>* This section is used to practice integrating APIs. The API used is TMDB API *</small>
-                                    <div className="table-container">
+                            ) : <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
+                        }
+                    </div>
+                </LazyRenderer>
+            </section>
+            <div style={{position: 'relative'}}>
+                <svg className="wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path  d="M0,256L60,224C120,192,240,128,360,101.3C480,75,600,85,720,117.3C840,149,960,203,1080,224C1200,245,1320,235,1380,229.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+                </svg>
+            </div>
+            <section className="section-placeholder-large secondary-bg" >
+               <LazyRenderer>
+                    <div className='flex-container'>
+                        <div className="media-favorites movie-container">
+                            <div className='section-title2'><h2>Favorite Movies</h2></div>
+                            <div className='movies'>
+                                {movies.map((movie, index) => (
+                                    <div className='media' key={movie.id}>
+                                        <span>{index+1}.</span>
+                                        <img className='media-img' onClick={() => handleOpenClose('open',movie.id)} src={movie.img} alt={movie.title}/>
+                                        <dialog data-modal ref={(dialog) => {(dialogRefs.current[movie.id] = dialog)}} onClick={(e) => handleOutsideModalClick(e, movie.id)}>
+                                            {openDialogId === movie.id ? movie.iframe : ''}
+                                            <FontAwesomeIcon icon={"fa-solid fa-square-xmark" as IconProp} size="2xl" onClick={() => handleOpenClose('close',movie.id)}/>
+                                        </dialog>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        { (trendingMovies?.length ?? 0) > 0 ? (
+                            <div className='trending-media'>
+                                <h2 className='section-title'>Popular Movies Out Now!</h2>
+                                <small>* This section is used to practice integrating APIs. The API used is TMDB API *</small>
+                                <div className="table-container">
                                     <table className="table">
                                         <thead>
                                             <tr>
@@ -307,84 +363,23 @@ const About = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {popularShows?.map((show, index) => (
-                                                <tr key={show.id}>
-                                                    <td>{index + 1}</td>
-                                                    <td><span>{show.name}</span></td>
-                                                    <td><img src={show.poster_path ? `https://image.tmdb.org/t/p/w780${show.poster_path}` : 'https://via.placeholder.com/780x439?text=No+Image' } alt={show.title}/></td>
-                                                    <td>{show.first_air_date}</td>
-                                                    <td>{show.overview}</td>
+                                            {trendingMovies?.map((movie,index) => (
+                                                <tr key={movie.id}> 
+                                                    <td>{index+1}</td>
+                                                    <td><span>{movie.title}</span></td>
+                                                    <td><img src={movie.poster_path ? `https://image.tmdb.org/t/p/w780${movie.poster_path}`: 'https://via.placeholder.com/780x439?text=No+Image'} alt={movie.title}/></td>
+                                                    <td>{movie.release_date}</td>
+                                                    <td>{movie.overview}</td>
                                                 </tr>
-                                            ))}
-                                        </tbody>
+                                            ))}  
+                                        </tbody> 
                                     </table>
-                                    </div>
-                                </div>
-                                ) : <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
-                            }
-                        </>
-                    )}
-                </div>
-            </section>
-            <div style={{position: 'relative'}}>
-                <svg className="wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                    <path  d="M0,256L60,224C120,192,240,128,360,101.3C480,75,600,85,720,117.3C840,149,960,203,1080,224C1200,245,1320,235,1380,229.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-                </svg>
-            </div>
-            <section className="section-placeholder-large secondary-bg" >
-                <div className={`flex-container ${moviesInView ? "fade-in" : "hidden"}`} ref={(element) => { movieRef.current = element; moviesInViewRef(element); }}>
-                    
-                    {moviesInView && (
-                        <>
-                            <div className="media-favorites movie-container">
-                                <div className='section-title2'><h2>Favorite Movies</h2></div>
-                                <div className='movies'>
-                                    {movies.map((movie, index) => (
-                                        <div className='media' key={movie.id}>
-                                            <span>{index+1}.</span>
-                                            <img className='media-img' onClick={() => handleOpenClose('open',movie.id)} src={movie.img} alt={movie.title}/>
-                                            <dialog data-modal ref={(dialog) => {(dialogRefs.current[movie.id] = dialog)}} onClick={(e) => handleOutsideModalClick(e, movie.id)}>
-                                                {openDialogId === movie.id ? movie.iframe : ''}
-                                                <FontAwesomeIcon icon={"fa-solid fa-square-xmark" as IconProp} size="2xl" onClick={() => handleOpenClose('close',movie.id)}/>
-                                            </dialog>
-                                        </div>
-                                    ))}
                                 </div>
                             </div>
-                            { (trendingMovies?.length ?? 0) > 0 ? (
-                                <div className='trending-media'>
-                                    <h2 className='section-title'>Popular Movies Out Now!</h2>
-                                    <small>* This section is used to practice integrating APIs. The API used is TMDB API *</small>
-                                    <div className="table-container">
-                                        <table className="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Title</th>
-                                                    <th>Poster</th>
-                                                    <th>Date</th>
-                                                    <th>Overview</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {trendingMovies?.map((movie,index) => (
-                                                    <tr key={movie.id}> 
-                                                        <td>{index+1}</td>
-                                                        <td><span>{movie.title}</span></td>
-                                                        <td><img src={movie.poster_path ? `https://image.tmdb.org/t/p/w780${movie.poster_path}`: 'https://via.placeholder.com/780x439?text=No+Image'} alt={movie.title}/></td>
-                                                        <td>{movie.release_date}</td>
-                                                        <td>{movie.overview}</td>
-                                                    </tr>
-                                                ))}  
-                                            </tbody> 
-                                        </table>
-                                    </div>
-                                </div>
-                                ) : <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
-                            }
-                        </>
-                    )}
-                </div>
+                            ) : <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
+                        }
+                    </div>
+               </LazyRenderer>
             </section>
             <div style={{position: 'relative'}}>
                 <svg className="wave-svg-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
