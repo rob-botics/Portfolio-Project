@@ -1089,6 +1089,7 @@ to {
         overflow-y: scroll; 
         -webkit-overflow-scrolling: touch; 
     }
+    .flip-card-front, .flip-card-back {height: 150px;}
     .headshot{width: 325px; height: 325px;}
     .select{width: 100px;}
     option{padding: 12.5px;}
