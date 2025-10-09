@@ -1082,9 +1082,8 @@ to {
     .yt-clip {width: 100%;}
 }
 @media screen and (max-width: 450px) {
-    body{
-        background-image: var(--bg-img-mobile)        ;
-    }
+    body{background-image: var(--bg-img-mobile);}
+    .hidden {height: 110dvh;}
     main.content-wrapper{
         height: 100vh;
         overflow-y: scroll; 
