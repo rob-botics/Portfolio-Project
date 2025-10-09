@@ -157,7 +157,6 @@ section{
 }
 .hidden {
   opacity: 0;
-  height: 25dvh;
   transform: translateY(20px);
   transition: opacity 1s ease-out .5s, transform 1s ease-out .5s;
 }
@@ -484,6 +483,7 @@ select,option{cursor: pointer;}
     overflow-y: scroll;
     font-family: var(--font-secondary);
 }
+.paragraph3 p{ height: 100%;}
 .playlist-container ul{
     margin: 3.5px;
     height: 300px;

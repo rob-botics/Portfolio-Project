@@ -14,6 +14,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import Music from "../components/Music";
 import { PageWrapper } from "../components/PageWrapper";
+import LazyRenderer from "../components/LazyRenderer";
 library.add(fas, far, fab)
 
 const Slider = dynamic(() => import('../components/Slider'), {
@@ -47,31 +48,16 @@ type PopularMedia = {
 }
 const About = () => {
     const dialogRefs = useRef<Record<string, HTMLDialogElement | null>>({});
-    const aboutRef = useRef<HTMLElement | null>(null) 
-    const ffRef = useRef<HTMLElement | null>(null)
-    const petsRef = useRef<HTMLElement | null>(null)
-    const songRef = useRef<HTMLElement | null>(null) 
-    const playlistRef = useRef<HTMLElement | null>(null)
     const showRef = useRef<HTMLElement | null>(null)
     const movieRef = useRef<HTMLElement | null>(null)
-    const animeRef = useRef<HTMLElement | null>(null)
-    const mapRef = useRef<HTMLElement | null>(null)
-
-    const { ref: aboutInViewRef, inView: aboutInView } = useInView({ threshold: 0.1});
-    const { ref: ffInViewRef, inView: ffInView } = useInView({ threshold: 0.1});
-    const { ref: petsInViewRef, inView: petsInView } = useInView({ threshold: 0.1});
-    const { ref: songInViewRef, inView: songInView } = useInView({ threshold: 0.1 });
-    const { ref: playlistInViewRef, inView: playlistInView } = useInView({ threshold: 0.1 });
     const { ref: showInViewRef, inView: showsInView } = useInView({ 
         threshold: 0.1,
         rootMargin: "75% 0px"
     });
     const { ref: moviesInViewRef, inView: moviesInView } = useInView({ 
-        threshold: 0.1,  
+        threshold: 0.1,
         rootMargin: "75% 0px"
     });
-    const { ref: animeInViewRef, inView: animeInView } = useInView({ threshold: 0.1 });
-    const { ref: mapInViewRef, inView: mapInView } = useInView({ threshold: 0.1 });
 
     const tvshows: VideoItem[] = [
         {id: 'gumball', img: '/img/media/gumball.jpg', title: 'The Amazing World of Gumball', iframe: <iframe loading="lazy" className="yt-clip" src="https://www.youtube.com/embed/TiHD0r3az9A?start=57" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>},
@@ -182,55 +168,50 @@ const About = () => {
 
     return(
         <PageWrapper>
-            <section className='section-placeholder-medium'>
-                <div className={`${aboutInView ? "fade-in" : "hidden"}`} ref={(element) => { aboutRef.current = element; aboutInViewRef(element); }}>
-                {aboutInView && <>
+            <section>
+                <LazyRenderer>
                     <div className='section-title'><h2>About Me</h2></div>
-                        <div className='flex-container'>
-                            <div className={`slider-container`}><Slider page={'about/me'}/></div> <br/>
-                            <div className='paragraph'>
-                                Hello, My name is Robert Morrison and I&apos;m a Web Developer. As I begin my career, I want to be apart of a work environment that allows me to continue
-                                learning and the room to grow as a web developer. I want to be a valuable asset to my work environment and make an impact with the work that I will do.
-                                Hopefully one day I will be able to inspire other young minds of the next generation to pursue the ever growing industry of technology.
-                                <br/><br/>
-                                I am an active person, always striving to experience and try new things. My hobbies include playing volleyball, learning the guitar, y me gusta 
-                                aprendiendo español. I collect pins and beanies. My favorite foods consist of 1) Honey Buns 2) Pasta 3) Tacos. And yeah that&apos;s a little bit about me. 😁✌️
-                            </div>
+                    <div className='flex-container'>
+                        <div className={`slider-container`}><Slider page={'about/me'}/></div> <br/>
+                        <div className='paragraph'>
+                            Hello, My name is Robert Morrison and I&apos;m a Web Developer. As I begin my career, I want to be apart of a work environment that allows me to continue
+                            learning and the room to grow as a web developer. I want to be a valuable asset to my work environment and make an impact with the work that I will do.
+                            Hopefully one day I will be able to inspire other young minds of the next generation to pursue the ever growing industry of technology.
+                            <br/><br/>
+                            I am an active person, always striving to experience and try new things. My hobbies include playing volleyball, learning the guitar, y me gusta 
+                            aprendiendo español. I collect pins and beanies. My favorite foods consist of 1) Honey Buns 2) Pasta 3) Tacos. And yeah that&apos;s a little bit about me. 😁✌️
                         </div>
-                    </> 
-                    }
-                </div>
+                    </div>
+                </LazyRenderer>
             </section>
-            <div style={{position: 'relative'}}>
+            <div style={{position: 'relative', zIndex:0}}>
                 <svg className="wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path  d="M0,256L60,224C120,192,240,128,360,101.3C480,75,600,85,720,117.3C840,149,960,203,1080,224C1200,245,1320,235,1380,229.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
                 </svg>
             </div>
-            <section className='secondary-bg section-placeholder-medium'>
-                <div className={`${ffInView ? "fade-in" : "hidden"}`} ref={(element) => { ffRef.current = element; ffInViewRef(element); }}>
-                    { ffInView && <>
-                        <div className='section-title'><h2>Family and Friends</h2></div>
-                        <div className='flex-container ff-container'>
-                            <div className='paragraph2'>
-                                This section is just a little S/O to all my wonderful friends. You guys have been so supportive throughout the years as I have continue to navigate
-                                my way through coding. Always cheering me on in every aspect of my life and as I grind toward my dreams. You guys always show me love and know how 
-                                to put a smile on my face. I appreciate each and everyone of you. Your presence in my life brings me great joy and my gratitude for you all knows no
-                                bounds. <br/><br/>
-                                It is a blessing I get to call each and every single one of you my friend. I cannot wait to see what the future has in store for all of you beautiful
-                                souls. Even though I dont&apos; have pictures of everyone this message is intended for, just know that I will cherish you all FOREVER! 😄
-                            </div><br/>
-                            <div className={`slider-container2`}><Slider page={'about/ff'}/></div> 
-                        </div>
-                    </> }
-                </div>
-            </section>
-            <section className='secondary-bg section-placeholder-medium' style={{top: '-50px'}}>
-                <div className={`${petsInView ? "fade-in" : "hidden"}`} ref={(element) => { petsRef.current = element; petsInViewRef(element); }}>
-                    { petsInView && <>
-                        <div className='section-title'><h2>Pets</h2></div>
-                        <div className='flex-container'>
-                            <div className={`slider-container`}><Slider page={'about/pets'}/></div> <br/>
-                            <div className="paragraph3">
+            <section className="secondary-bg">
+                <LazyRenderer>
+                    <div className='section-title'><h2>Family and Friends</h2></div>
+                    <div className='flex-container ff-container'>
+                        <div className='paragraph2'>
+                            This section is just a little S/O to all my wonderful friends. You guys have been so supportive throughout the years as I have continue to navigate
+                            my way through coding. Always cheering me on in every aspect of my life and as I grind toward my dreams. You guys always show me love and know how 
+                            to put a smile on my face. I appreciate each and everyone of you. Your presence in my life brings me great joy and my gratitude for you all knows no
+                            bounds. <br/><br/>
+                            It is a blessing I get to call each and every single one of you my friend. I cannot wait to see what the future has in store for all of you beautiful
+                            souls. Even though I dont&apos; have pictures of everyone this message is intended for, just know that I will cherish you all FOREVER! 😄
+                        </div><br/>
+                        <div className={`slider-container2`}><Slider page={'about/ff'}/></div> 
+                    </div>
+                </LazyRenderer>
+            </section> 
+            <section className="secondary-bg">
+                <LazyRenderer>
+                    <div className='section-title'><h2>Pets</h2></div>
+                    <div className='flex-container'>
+                        <div className={`slider-container`}><Slider page={'about/pets'}/></div> <br/>
+                        <div className="paragraph3">
+                            <p>
                                 Living with Jax and Quinn is like sharing an apartment with a retired mob boss and his unhinged intern. Jax, my creamy tabby king, walks
                                 around like he owns the deed to every room. The orange-and-white gentleman, Jax, refined, composed, and has perfected the art of lying down 
                                 dramatically in sunbeams like he’s starring in his own slow-motion indie film. He judges everything I do—from how I open treats to my sock 
@@ -243,33 +224,35 @@ const About = () => {
                                 They fight like siblings, nap like children, and conspire like criminals. They’ve fully taken over my life, and frankly, I’m just their 
                                 underpaid assistant with thumbs. I wouldn&apos;t trade this unfiltered fluff-and-chaos duo for anything... except maybe five uninterrupted minutes
                                 of sitting without someone walking across my keyboard.
-                            </div>
+                            </p>
                         </div>
-                    </> }
-                </div>
-            </section>
+                    </div>
+                </LazyRenderer>
+            </section> 
             <div style={{position: 'relative', top: '-50px'}}>
                 <svg className="wave-svg-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fillOpacity="1" d="M0,256L60,224C120,192,240,128,360,101.3C480,75,600,85,720,117.3C840,149,960,203,1080,224C1200,245,1320,235,1380,229.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
                 </svg>
             </div>
-            <section className="section-placeholder-medium">
-                <div className={`${songInView ? "fade-in" : "hidden"}`} ref={(element) => { songRef.current = element; songInViewRef(element); }}> <Music /></div>
+            <section>
+                <LazyRenderer section={'music'}>
+                    <Music />
+                </LazyRenderer>
             </section>
             <div style={{position: 'relative'}}>
                 <svg className='wave-svg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fillOpacity="1" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,128C840,96,960,64,1080,64C1200,64,1320,96,1380,112L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
                 </svg>
             </div>
-            <section className='secondary-bg section-placeholder-medium'>
-                <div className={`playlist ${playlistInView ? "fade-in" : "hidden"}`} ref={(element) => { playlistRef.current = element; playlistInViewRef(element); }}>   
-                {  <>
-                    <div><Playlist/></div>
-                    <div className='section-title'>
-                        <h2>Playlists</h2>
+            <section className="secondary-bg">
+                <LazyRenderer section={'playlist'}>
+                    <div className="playlist">
+                        <div><Playlist/></div>
+                        <div className='section-title'>
+                            <h2>Playlists</h2>
+                        </div>
                     </div>
-                </>}
-                </div>
+                </LazyRenderer>
             </section>
             <div style={{position: 'relative'}}>
                 <svg className='wave-svg-bottom' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -309,37 +292,36 @@ const About = () => {
                                 </div>
                             </div>
                             {(popularShows?.length ?? 0) > 0 ? (
-                            <div className='trending-media'>
-                                <h2 className='section-title'>Popular Shows To Watch!</h2>
-                                <small>* This section is used to practice integrating APIs. The API used is TMDB API *</small>
-                                <div className="table-container">
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Title</th>
-                                            <th>Poster</th>
-                                            <th>Date</th>
-                                            <th>Overview</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {popularShows?.map((show, index) => (
-                                            <tr key={show.id}>
-                                                <td>{index + 1}</td>
-                                                <td><span>{show.name}</span></td>
-                                                <td><img src={show.poster_path ? `https://image.tmdb.org/t/p/w780${show.poster_path}` : 'https://via.placeholder.com/780x439?text=No+Image' } alt={show.title}/></td>
-                                                <td>{show.first_air_date}</td>
-                                                <td>{show.overview}</td>
+                                <div className='trending-media'>
+                                    <h2 className='section-title'>Popular Shows To Watch!</h2>
+                                    <small>* This section is used to practice integrating APIs. The API used is TMDB API *</small>
+                                    <div className="table-container">
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Title</th>
+                                                <th>Poster</th>
+                                                <th>Date</th>
+                                                <th>Overview</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {popularShows?.map((show, index) => (
+                                                <tr key={show.id}>
+                                                    <td>{index + 1}</td>
+                                                    <td><span>{show.name}</span></td>
+                                                    <td><img src={show.poster_path ? `https://image.tmdb.org/t/p/w780${show.poster_path}` : 'https://via.placeholder.com/780x439?text=No+Image' } alt={show.title}/></td>
+                                                    <td>{show.first_air_date}</td>
+                                                    <td>{show.overview}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                    </div>
                                 </div>
-                            </div>
-                            ) : (
-                            <p>Loading popular shows...</p>
-                            )}
+                                ) : <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
+                            }
                         </>
                     )}
                 </div>
@@ -370,7 +352,7 @@ const About = () => {
                                 </div>
                             </div>
                             { (trendingMovies?.length ?? 0) > 0 ? (
-                                    <div className='trending-media'>
+                                <div className='trending-media'>
                                     <h2 className='section-title'>Popular Movies Out Now!</h2>
                                     <small>* This section is used to practice integrating APIs. The API used is TMDB API *</small>
                                     <div className="table-container">
@@ -398,7 +380,7 @@ const About = () => {
                                         </table>
                                     </div>
                                 </div>
-                                ) : ( <p>Loading trending movies...</p>)
+                                ) : <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
                             }
                         </>
                     )}
@@ -409,11 +391,12 @@ const About = () => {
                     <path fillOpacity="1" d="M0,256L60,224C120,192,240,128,360,101.3C480,75,600,85,720,117.3C840,149,960,203,1080,224C1200,245,1320,235,1380,229.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
                 </svg>
             </div>
-            <section className="section-placeholder-medium">
-                <div className={`media-favorites ${animeInView ? "fade-in" : "hidden"}`} ref={(element) => { animeRef.current = element; animeInViewRef(element); }}>
-                    <div className='section-title2'><h2>Favorite Anime</h2></div>
-                    <div className='animes'>
-                        {animeInView && animes.map((anime, index) => (
+            <section>
+                <LazyRenderer>
+                    <div className='media-favorites'>
+                        <div className='section-title2'><h2>Favorite Anime</h2></div>
+                        <div className='animes'>
+                            {animes.map((anime, index) => (
                                 <div className='media' key={anime.id}>
                                     <span>{index+1}.</span>
                                     <img className='media-img' onClick={() => handleOpenClose('open',anime.id)} src={anime.img} alt={anime.title}/>
@@ -422,21 +405,22 @@ const About = () => {
                                             <FontAwesomeIcon icon={"fa-solid fa-square-xmark" as IconProp} size="2xl" onClick={() => handleOpenClose('close',anime.id)}/>
                                         </dialog>
                                 </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
+                </LazyRenderer>
             </section>
             <div style={{position: 'relative'}}>
                 <svg className='wave-svg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fillOpacity="1" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,128C840,96,960,64,1080,64C1200,64,1320,96,1380,112L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
                 </svg>
             </div>
-            <section className='secondary-bg section-placeholder-medium'>
-                <div className={`${mapInView ? "fade-in" : "hidden"}`} ref={(element) => { mapRef.current = element; mapInViewRef(element); }}>
+            <section className="secondary-bg">
+                <LazyRenderer>
                     <div className='section-title'><h2>Favorite Food Places</h2></div>
                     <div className="flex-container" > 
                         {/* map first breakpoint 850px */}
-                        {mapInView && <>
+                        {<>
                         <Map restaurant={selectedRestaurant} />
                         <div className="map-btns">
                             {restaurants.map(r => (
@@ -449,7 +433,7 @@ const About = () => {
                         </>}
                         
                     </div>
-                </div>
+                </LazyRenderer>
             </section>
         </PageWrapper>
     )
