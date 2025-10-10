@@ -600,16 +600,24 @@ p button:hover {
 /* End of Contact */
 /* Checkout */
 .checkout{
+    gap: 2rem;
     display: flex;
+    padding: 0 25px;
+    align-items: center;
     justify-content: space-evenly;
+    font-family: var(--secondary-font);
 }
-.slt-checkout-container{
-    flex-direction: row;
-}
+.checkout img {width: 100px;}
+.checkout p, .checkout .subtotal p {font-size: medium;}
+.slt-checkout-container{flex-direction: row;}
 .payment{
-    padding: 25px;
+    gap: 2rem;
+    padding: 10px;
+    display: flex;
     overflow-y: scroll;
-    width: 50%; height: 65dvh;
+    flex-direction: column;
+    justify-content: center;
+    width: 35%; height: 62.5dvh;
 }
 /* End of Checkout */
 /* Footer */
