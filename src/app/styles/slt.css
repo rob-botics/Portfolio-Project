@@ -608,7 +608,10 @@ p button:hover {
     font-family: var(--secondary-font);
 }
 .checkout img {width: 100px;}
-.checkout p, .checkout .subtotal p {font-size: medium;}
+.checkout p, .checkout .subtotal p {
+    font-size: medium;
+    font-weight: bold;
+}
 .slt-checkout-container{flex-direction: row;}
 .payment{
     gap: 2rem;
