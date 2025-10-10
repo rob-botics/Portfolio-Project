@@ -1,14 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useCart } from '@/app/slt/components/CartProvider'
-/* import all the icons in Free Solid, Free Regular, and Brands styles */
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-import Link from 'next/link'
-import { useState } from 'react'
+import LoadingScreen from '@/app/components/LoadingScreen'
+import { useCart } from '@/app/slt/components/CartProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
+import { POST } from '@/app/api/email/route';
 library.add(fas, far, fab)
 
 type Products = {
@@ -23,8 +26,10 @@ type Mobile = {
     closeSidebar: () => void;
 }
 const Nav = ({mobile, closeSidebar}: Mobile) => {
+    const router = useRouter()
     const { state } = useCart();
-    const cartItems = state.items;
+    const pathname = usePathname()
+
     const { dispatch } = useCart();
     const [isCart, setIsCart] = useState(false)
     const cartCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
@@ -47,6 +52,35 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
         if(mobile === true)
             if (mobile) closeSidebar();
     }
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+    useEffect(() => {
+        sessionStorage.setItem('cart', JSON.stringify(state.items))
+    }, [state.items])
+    
+   async function handleCheckout() {
+        if(!pathname.includes('checkout'))
+            if (cartCount !== 0) 
+                try {
+                const res = await fetch('/api/store-cart', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json',},
+                    body: JSON.stringify({ items: state.items }),
+                })
+
+                const result = await res.json()                  
+                if (!result.clientSecret) 
+                    throw new Error('Failed to store cart data.')
+                
+                sessionStorage.setItem('stripeClientSecret', result.clientSecret);
+                router.push('/slt/checkout')
+                } catch (err) {console.error('Checkout failed:', err)}
+    }
+
+    if (!isClient) return <LoadingScreen loaded={isClient}/>
     return(
         <>            
             <div className="wave-top">
@@ -69,8 +103,8 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
                        </div>
                         <div className={`cart-component ${isCart === true ? 'cart-show' : 'cart-hide'}`}>
                             <ul className="cart-list">
-                                {cartItems.length === 0 ? <p>Your cart is empty.</p>
-                                :cartItems.map((item, index) => (
+                                {state.items.length === 0 ? <p>Your cart is empty.</p>
+                                :state.items.map((item, index) => (
                                     <li key={index} className="cart-item">
                                         <div className="cart-item-info">
                                             <img src={item.img} alt={item.id} width={50} />
@@ -90,8 +124,8 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
                                 ))}
                             </ul>
                             <div className="cart-total">
-                                Total: ${cartItems.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)}
-                                <button>Checkout</button>
+                                Total: ${state.items.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)}
+                                <button onClick={() => handleCheckout()}>Checkout</button>
                             </div>
                         </div>
                        <span><Link href='/slt/login'>Login</Link></span>

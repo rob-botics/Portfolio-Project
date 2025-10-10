@@ -574,7 +574,7 @@ p button:hover {
 }
 /* End of Menu */
 /* Contact */
-.slt-contact-container{
+.slt-contact-container, .slt-checkout-container{
     display: flex;
     transition: .5s;
     font-size: large;
@@ -598,7 +598,20 @@ p button:hover {
     font-family: var(--secondary-font);
 }
 /* End of Contact */
-
+/* Checkout */
+.checkout{
+    display: flex;
+    justify-content: space-evenly;
+}
+.slt-checkout-container{
+    flex-direction: row;
+}
+.payment{
+    padding: 25px;
+    overflow-y: scroll;
+    width: 50%; height: 65dvh;
+}
+/* End of Checkout */
 /* Footer */
 .slt-footer{
     bottom: 0; 

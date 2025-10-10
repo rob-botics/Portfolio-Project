@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import "@/app/styles/slt.css";
 import Link from 'next/link'
+import "@/app/styles/slt.css";
 import { useState } from 'react'
 import { useCart } from '@/app/slt/components/CartProvider'
 import { PageWrapper } from '../../components/PageWrapper'
@@ -45,11 +45,12 @@ const Menu = () => {
     ]
     
     const [flip, setFlip] = useState<number | null>(null)
+    const { state } = useCart();
     const { dispatch } = useCart();
 
     const handleAddItem = (product: Products) => {
-        console.log("Object: ",product)
         dispatch({ type: 'ADD_ITEM', payload: product });
+        console.log("Object: ",state.items)
     }
     const handleFlip = (index: number) => {setFlip(flip === index ? null : index)}
     return(
