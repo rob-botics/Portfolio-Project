@@ -4,9 +4,8 @@ import dynamic from "next/dynamic";
 import "@/app/styles/portfolio.css";
 import Map from "../components/Map";
 import Playlist from '../components/PlaylistSlider';
-import { useInView } from 'react-intersection-observer';
-import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
 import React, { useEffect,useState,useRef, ReactElement } from "react"
 
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
