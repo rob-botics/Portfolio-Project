@@ -55,7 +55,7 @@ const Home = () => {
                     <Slider page={'slt'}></Slider>
                 </header>
                 <section className='slt-section slt-secondary-bg'>
-                    <h2 className='slt-section-title'>Sweet Little Things Menu</h2>
+                    <h2 className='slt-section-title-home'>Sweet Little Things Menu</h2>
                     <div className='home-menu'>
                         <div>
                             <Link href="/slt/menu#cheesecakes"><img src={'/img/slt/home/home-cheesecake.jpg'} alt='home cake'/></Link>
@@ -76,7 +76,6 @@ const Home = () => {
                     </div>
                 </section>
                 <section className='slt-section'>
-                    <h2 className='slt-section-title2'>Sweet Little Things Menu</h2>
                     <div className='instagram-grid'>
                         <span>FOLLOW US<br/>ON INSTAGRAM</span>
                         <span>
@@ -103,7 +102,7 @@ const Home = () => {
                     </div>
                 </section>
                 <section className='slt-section slt-secondary-bg'>
-                    <h2 className='slt-section-title' style={{marginTop: '100px'}}>JOIN OUR EMAIL CLUB FOR:<br/><small>COUPONS, DISCOUNT CODES, & MORE</small></h2>
+                    <h2 className='slt-section-title-home' style={{marginTop: '150px'}}>JOIN OUR EMAIL CLUB FOR:<br/><small>COUPONS, DISCOUNT CODES, & MORE</small></h2>
                     <div className='subscribe-container'>
                          {error && <p className="error">please enter a valid email address</p>}
                         <div className='subscribe'>
