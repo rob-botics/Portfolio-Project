@@ -79,10 +79,11 @@ address{
 }
 audio{display: none;}
 body{
-    user-select: none;
+    user-select: text;
     position: relative;
     margin: 0 0 0 205px;
     transition: 1s ease;
+    caret-color: transparent;
     background-size: 100% 100%; 
     background-position: center;
     background-repeat: no-repeat;
