@@ -3,9 +3,9 @@
 'use client'
 
 import "@/app/styles/slt.css";
-import { loadStripe } from '@stripe/stripe-js'
+import { Appearance, loadStripe } from '@stripe/stripe-js'
 import React, { useEffect, useState } from 'react'
-import { Elements } from '@stripe/react-stripe-js'
+import { Elements, LinkAuthenticationElement } from '@stripe/react-stripe-js'
 import { PageWrapper } from '@/app/components/PageWrapper'
 import { useCart } from '@/app/slt/components/CartProvider'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
@@ -22,33 +22,38 @@ type Products = {
 }
 
 export default function Checkout() {
-    // const [message, setMessage] = useState<string | null>(null)
-    // const [isProcessing, setIsProcessing] = useState(false)
     const { state } = useCart();
-    
     const { dispatch } = useCart();
     const [cartTotal, setCartTotal] = useState<number>(0)
     const [clientSecret, setClientSecret] = useState<string>('');
-    const [cartItems, setCartItems] = useState<Products[]>([]);
 
-    useEffect(() => {
-        const storedCart = sessionStorage.getItem('cart');
-        if (storedCart) 
+
+    async function handleGetSecretClient(): Promise<string | undefined> {
+        if (state.items.length > 0) 
             try {
-                const parsed: unknown = JSON.parse(storedCart);
-
-                if (Array.isArray(parsed) && parsed.length > 0) 
-                    setCartItems(parsed as Products[])
-            } catch (e) {console.error('Failed to get cart:', e);}
-        
-        // Retrieve clientSecret from sessionStorage
-        const secret = sessionStorage.getItem('stripeClientSecret');
-        setClientSecret(secret as string);
+                const res = await fetch('/api/store-cart', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json',},
+                    body: JSON.stringify({ items: state.items }),
+                }) 
+                const result = await res.json()                  
+                if (!result.clientSecret) 
+                    throw new Error('Failed to store cart data.')
+                return result.clientSecret as string
+            } catch (err) {console.error('Checkout failed:', err)}
+        return undefined
+    }
+    useEffect(() => {
+        async function fetchClientSecret() {
+            const clientSecret = await handleGetSecretClient();
+            if (clientSecret) 
+                setClientSecret(clientSecret);
+        }
+        fetchClientSecret()
     }, []);
 
     useEffect(() => {
         setCartTotal(parseFloat(state.items.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)))
-
     },[state.items])
 
      const handleAddItem = (products: Products[], productName: string) => {
@@ -65,9 +70,22 @@ export default function Checkout() {
         else
             dispatch({ type: 'REMOVE_ITEM', payload: product.id });
     }
-    // if (!clientSecret)
-    //     return <div>Loading payment info...</div>;
 
+    const appearance: Appearance = {
+        theme: 'stripe', // or 'flat', 'night', or 'none'
+        variables: {
+            borderRadius: '4px',
+            colorText: '#e75480ec',
+            colorPrimary: '#e75480ec',
+            colorBackground: 'whitesmoke',
+            fontFamily: "'M PLUS Rounded 1c', arial",
+        },
+        rules: {
+            '.Label': {
+            color: 'whitesmoke',
+            }
+        }
+    };
     return (
         <PageWrapper>
             <div className="checkout slt-checkout-container slt-secondary-bg">
@@ -91,20 +109,51 @@ export default function Checkout() {
                         </div>
                     ))}
                 </div>
-                <div className="payment">
-                    <Elements options={{clientSecret}} stripe={stripePromise}>
-                        <CheckoutForm/>
-                        {cartTotal}
+                {!clientSecret ? <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
+                : <div className="payment">
+                    <Elements options={{clientSecret, appearance}} stripe={stripePromise}>
+                        <CheckoutForm cartTotal={cartTotal} />
                     </Elements>
-                </div>
+                </div>}
             </div>
         </PageWrapper>
     );
 }
+type Total = {
+    cartTotal: number
+}
 
-function CheckoutForm(){
+function CheckoutForm({cartTotal}: Total){
     const stripe = useStripe()
     const elements = useElements()
+    const [email, setEmail] = useState<string>('')
+    const [errorMessage, setErrorMessage] = useState<string>()
+    const [isProcessing, setIsProcessing] = useState<boolean>(false)
 
-    return <PaymentElement/>
+    function handlePayment(){
+        if (stripe == null || elements == null) return
+
+        setIsProcessing(true)
+
+        stripe.confirmPayment({elements, confirmParams: {
+            return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}//sucess`
+        }}).then(({error}) => {
+            if(error.type === 'card_error' || error.type === 'validation_error')
+                setErrorMessage(error.message)
+            else
+                setErrorMessage('An unknown error occurred.')
+        }).finally(() => setIsProcessing(false))
+    }
+
+    return (
+        <>  
+            <PaymentElement/>
+            <LinkAuthenticationElement onChange={e => setEmail(e.value.email)}/>
+            {errorMessage && <p>{errorMessage}</p>}
+            <button onClick={() => handlePayment()} disabled={stripe == null || elements == null || isProcessing}>
+                {isProcessing ? 'Purchasing...': `Purchase ${cartTotal}`}
+            </button>
+            
+        </>
+    )
 }

@@ -14,29 +14,22 @@ export default function Home ({theme}: HomeProps) {
     type Skill = {
       name: string
       src: string
-      exp: number
+      exp: string
     }
-    // const introRef = useRef<HTMLElement | null>(null)
-    // const skillsRef = useRef<HTMLElement | null>(null)
-    // const projectsRef = useRef<HTMLElement | null>(null)
-
-    // const { ref: introInViewRef, inView: introInView } = useInView({ threshold: 0.1 });
-    // const { ref: skillsInViewRef, inView: skillsInView } = useInView({ threshold: 0.1 });
-    // const { ref: projectsInViewRef, inView: projectsInView } = useInView({ threshold: 0.1 });
     
     const [headshotFade, setHeadshotFade] = useState(false);
     const skillImages: Skill[] = [
-      {name: 'html', src: '/img/skills/html.png', exp: 0}, 
-      {name: 'css', src: '/img/skills/css.png', exp: 0}, 
-      {name: 'js', src: '/img/skills/js.png', exp: 0}, 
-      {name: 'java', src: '/img/skills/java.png', exp: 0}, 
-      {name: 'sql', src: '/img/skills/sql.png', exp: 0},
-      {name: 'react', src: '/img/skills/react.png', exp: 0}, 
-      {name: 'agile', src: '/img/skills/agile.png', exp: 0}, 
-      {name: 'bootstrap', src: '/img/skills/bootstrap2.png', exp: 0}, 
-      {name: 'git', src: '/img/skills/git.png', exp: 0}
+      {name: 'html', src: '/img/skills/html.png', exp: '6 years'}, 
+      {name: 'css', src: '/img/skills/css.png', exp: '6 years'}, 
+      {name: 'javascript', src: '/img/skills/js.png', exp: '5 years'}, 
+      {name: 'typescript', src: '/img/skills/ts.png', exp: '6 months'}, 
+      {name: 'sql', src: '/img/skills/sql.png', exp: '2 years'},
+      {name: 'react', src: '/img/skills/react.png', exp: '6 months'}, 
+      {name: 'next\.js', src: '/img/skills/nextjs.webp', exp: '6 months'}, 
+      {name: 'bootstrap', src: '/img/skills/bootstrap2.png', exp: '6 years'}, 
+      {name: 'git', src: '/img/skills/git.png', exp: '6 months'}
     ]
-    const priority = ['html', 'css', 'js', 'java', 'sql', 'react', 'agile', 'bootstrap', 'git'];
+    const priority = ['html', 'css', 'javascript', 'typescript', 'sql', 'react', 'next.js', 'bootstrap', 'git'];
     skillImages.sort((a: Skill, b: Skill) => priority.indexOf(a.name) - priority.indexOf(b.name));
 
     useEffect(() => {
@@ -60,28 +53,14 @@ export default function Home ({theme}: HomeProps) {
                     <div className="section-title "><h2 >Skills</h2></div>
                     <div className="skill-container">
                         {skillImages.map((img, index:number) => (
-                            img.name.includes('java') ? 
                             <div className="skills flip-card" key={index}>
-                                <div className="flip-card-inner">
-                                    <div className="flip-card-front">
-                                        <img src={img.src} alt={`${img.name}`} className='java'/>
-                                    </div>
-                                    <div className="flip-card-back">
-                                        <p className="skills-name">
-                                            {img.name.replace(/\..*$/, '')}<br/> 
-                                            {`(${img.exp})`}
-                                        </p> 
-                                    </div>
-                                </div>
-                            </div>
-                            : <div className="skills flip-card" key={index}>
                                 <div className="flip-card-inner">
                                     <div className="flip-card-front">
                                         <img src={img.src} alt={`${img.name}`} className='skills-img'/>
                                     </div>
                                     <div className="flip-card-back">
                                         <p className="skills-name">
-                                            {img.name.replace(/\..*$/, '')} <br/>
+                                            {img.name} <br/>
                                             {`(${img.exp})`}
                                         </p> 
                                     </div>

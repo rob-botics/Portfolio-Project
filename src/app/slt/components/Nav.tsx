@@ -61,23 +61,10 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
         sessionStorage.setItem('cart', JSON.stringify(state.items))
     }, [state.items])
     
-   async function handleCheckout() {
+   function handleCheckout() {
         if(!pathname.includes('checkout'))
-            if (cartCount !== 0) 
-                try {
-                const res = await fetch('/api/store-cart', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json',},
-                    body: JSON.stringify({ items: state.items }),
-                })
-
-                const result = await res.json()                  
-                if (!result.clientSecret) 
-                    throw new Error('Failed to store cart data.')
-                
-                sessionStorage.setItem('stripeClientSecret', result.clientSecret);
-                router.push('/slt/checkout')
-                } catch (err) {console.error('Checkout failed:', err)}
+            router.push('/slt/checkout')     
+        setIsCart(prev => !prev)   
     }
 
     if (!isClient) return <LoadingScreen loaded={isClient}/>

@@ -5,7 +5,7 @@
 :root{
     --primary-font: "Indie Flower";
     --secondary-font: "M PLUS Rounded 1c";
-    --slt-primary-color: rgba(231, 84, 128,.925);
+    --slt-primary-color: rgba(231, 84, 128, 0.925);
 }
 /* Home */
 hr{
@@ -154,6 +154,8 @@ nav > div:last-child{
     gap: 1rem;
     display: flex;
     font-size: 12px;
+    text-align: center;
+    justify-content: space-between;
 }
 .cart-item{
     padding: 10px;
@@ -228,7 +230,7 @@ nav a:hover{scale: 1.175;}
     text-align: center;
 }
 .login > button {width: 50%;}
-.login > button, .cart-total button {
+.login > button, .cart-total button, .payment button {
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -285,7 +287,14 @@ nav a:hover{scale: 1.175;}
     font-family: var(--primary-font);
     background: var(--slt-primary-color);
 }
-.login-btns button:hover, .login-btns button.active, .login > button:hover, .cart-total button:hover {
+.payment button{
+    width: 100%;
+    margin: 35px 0;
+}
+.payment button:disabled{
+    filter: saturate(.5);
+}
+.login-btns button:hover, .login-btns button.active, .login > button:hover, .cart-total button:hover, .payment button:hover {
     scale: 1.05;
     background: whitesmoke;
     color: var(--slt-primary-color);
@@ -607,20 +616,27 @@ p button:hover {
     justify-content: space-evenly;
     font-family: var(--secondary-font);
 }
+.checkout-cart{
+    height: 65dvh;
+    overflow-y: scroll;
+}
 .checkout img {width: 100px;}
 .checkout p, .checkout .subtotal p {
     font-size: medium;
     font-weight: bold;
+    letter-spacing: .075rem;
 }
 .slt-checkout-container{flex-direction: row;}
 .payment{
-    gap: 2rem;
     padding: 10px;
-    display: flex;
+    font-weight: bold;
     overflow-y: scroll;
-    flex-direction: column;
-    justify-content: center;
     width: 35%; height: 62.5dvh;
+}
+.payment p {
+    margin: 0;
+    font-size: large;
+    color: palevioletred;
 }
 /* End of Checkout */
 /* Footer */
