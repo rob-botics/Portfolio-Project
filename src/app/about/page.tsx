@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import "@/app/styles/portfolio.css";
 import dynamic from "next/dynamic";
+import "@/app/styles/portfolio.css";
 import Map from "../components/Map";
 import Playlist from '../components/PlaylistSlider';
 import { useInView } from 'react-intersection-observer';

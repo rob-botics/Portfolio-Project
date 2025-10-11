@@ -2,12 +2,11 @@
 
 'use client'
 import Link from "next/link";
-import "./styles/portfolio.css";
+import "@/app/styles/portfolio.css";
 import Slider from "./components/Slider";
-import { PageWrapper } from './components/PageWrapper';
-import { useInView } from "react-intersection-observer";
-import React, { useEffect,useRef,useState } from "react";
+import React, { useEffect, useState } from "react";
 import LazyRenderer from "./components/LazyRenderer";
+import { PageWrapper } from './components/PageWrapper';
 
 type HomeProps = {theme: string}
 

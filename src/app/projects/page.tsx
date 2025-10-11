@@ -1,4 +1,4 @@
-import "./styles/portfolio.css";
+import "@/app/styles/portfolio.css";
 import { PageWrapper } from "../components/PageWrapper"
 
 const Projects = () => {
