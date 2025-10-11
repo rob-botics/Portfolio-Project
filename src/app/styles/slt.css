@@ -483,6 +483,7 @@ p button:hover {
 .error{
     font-size: large;
     font-weight: bold;
+    text-align: center;
     color: palevioletred;
     font-family: var(--secondary-font);
 }
