@@ -484,10 +484,10 @@ p button:hover {
     background: var(--slt-primary-color);
 }
 .error{
+    color: #ececec;
     font-size: large;
     font-weight: bold;
     text-align: center;
-    color: palevioletred;
     font-family: var(--secondary-font);
 }
 /* End of Home */
@@ -897,7 +897,7 @@ p button:hover {
     .header-img2{background-image: var(--header-img2-mobile);}
     .header-img3{background-image: var(--header-img3-mobile);}
     .home-menu {grid-template-columns: repeat(2, 42.5%);}
-    .slt-section-title, .slt-section-title2 { font-size: x-large; }
+    .slt-section-title, .slt-section-title2, .slt-section-title-home { font-size: x-large; }
     .wave-top .wave, .slt-footer > svg {
         height: 85px;
         width: calc(150% + 1.3px);
