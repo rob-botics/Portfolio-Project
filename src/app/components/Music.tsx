@@ -24,7 +24,7 @@ const Music = () => {
             name: 'JoJo', 
             firstSongTitle: 'One Last Time', 
             secondSongTitle: 'Use My Shoulder', 
-            firstSrc: 'https://open.spotify.com/embed/track/4TKQupawBTN4tbwZpGUJlh?utm_source=generator', 
+            firstSrc: 'https://open.spotify.com/embed/track/4172S3BC4ViI5biWFakPuO?utm_source=generator', 
             secondSrc:'https://open.spotify.com/embed/track/6E2i1jYg46C9zrVptJGvqJ?utm_source=generator'
         },
         {
