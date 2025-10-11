@@ -464,18 +464,19 @@ p button:hover {
     border-radius: 4px;
     color: whitesmoke;
     letter-spacing: .25rem;
-    background: var(--slt-primary-color);
+    caret-color: whitesmoke;
     font-family: var(--secondary-font);
+    background: var(--slt-primary-color);
     border-bottom: 5px solid var(--slt-primary-color);
 }
 .subscribe button{
     border: none;
     transition: .5s;
     cursor: pointer;
-    font-size: x-large;
+    padding: 5px 50px;
     font-weight: bold;
     border-radius: 4px;
-    padding: 5px 50px;
+    font-size: x-large;
     letter-spacing: .125rem;
     color: var(--slt-primary-color);
     font-family: var(--primary-font);
