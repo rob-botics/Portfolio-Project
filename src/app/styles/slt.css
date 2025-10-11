@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 :root{
+    color: whitesmoke;
     --primary-font: "Indie Flower";
     --secondary-font: "M PLUS Rounded 1c";
     --slt-primary-color: rgba(231, 84, 128, 0.925);
@@ -11,11 +12,12 @@
 hr{
     margin: 0; 
     color: whitesmoke;
-}
+}  
+input[type='checkbox']{display: none;}
 a,::placeholder{color: whitesmoke;}
 .logo{
+    width: 75px;
     z-index: 1001;
-    width: 100px;
     transition: .5s;
     position: fixed;
     border-radius: 50%;
@@ -98,12 +100,12 @@ nav{
     justify-content: space-between;
 }
 nav > div:first-child{
-    width: 45%;
+    width: 32.5%;
     display: flex;
     font-size: large;
     font-weight: bold;
     letter-spacing: .125rem;
-    justify-content: space-evenly;
+    justify-content: space-between;
     font-family: var(--primary-font);
 }
 nav > div:last-child{
@@ -616,22 +618,36 @@ p button:hover {
     justify-content: space-evenly;
     font-family: var(--secondary-font);
 }
+.checkout h1{
+    top: 25px;
+    z-index: 1000;
+    position: absolute;
+    font-family: var(--primary-font)
+}
 .checkout-cart{
     height: 65dvh;
+    display: flex;
     overflow-y: scroll;
+    flex-direction: column;
+    justify-content: center;
 }
+.checkout-cart > div{height: 100%;}
 .checkout img {width: 100px;}
-.checkout p, .checkout .subtotal p {
+.checkout p, .checkout .subtotal p{text-align: right;}
+.checkout p, .checkout .subtotal p, .checkout .cart-total {
     font-size: medium;
     font-weight: bold;
     letter-spacing: .075rem;
 }
 .slt-checkout-container{flex-direction: row;}
 .payment{
+    width: 35%; 
     padding: 10px;
+    display: flex;
     font-weight: bold;
     overflow-y: scroll;
-    width: 35%; height: 62.5dvh;
+    justify-content: end;
+    flex-direction: column;
 }
 .payment p {
     margin: 0;
@@ -692,6 +708,9 @@ p button:hover {
         padding: 5px;
      }
 }
+@media screen and (width <= 1250px) {
+    nav > div:first-child{width: 37.5%}
+}
 @media screen and (width <= 1148px) {
     .wave-top .wave, .slt-footer > svg{ height: 125px; }
     .product img, .product2 img { width: 185px; }
@@ -700,6 +719,7 @@ p button:hover {
     }
 }
 @media screen and (width <= 1086px) {
+    nav > div:first-child{width: 42.5%}
     .product img, .product2 img { width: 167.5px; }
     .product-btn-container {
         gap: .5rem;
@@ -716,12 +736,11 @@ p button:hover {
         padding: 25px 12.5px;
     }
 }
-@media screen and (width <= 990px) {
-    nav > div:first-child{width: 60%; }
+@media screen and (width <= 990px) { 
+    nav {padding: 20px 25px;}      
     strong{font-size: x-large;}
-    .header-img1 p, .header-img2 p, .header-img3 p {
-        font-size: medium;
-    }
+    nav > div:first-child{width: 47.5%; }
+    .header-img1 p, .header-img2 p, .header-img3 p { font-size: medium; }
 }
 @media screen and (width <= 968px) {
     .product p, .product2 p { font-size: 12.5px; }
@@ -754,6 +773,24 @@ p button:hover {
     }
     .home-menu div { padding: 7.5px; }
     .cart-component {left: -275px;}
+    .checkout h1{ 
+        top: 70px; 
+        z-index: 0;
+    }
+    .checkout-cart{
+        width: 97.5%;
+        height: 100%;
+        margin-top: 25%;
+    }
+    .payment{
+        justify-content: start;
+        width: 70dvw; height: 75dvh;
+    }
+    .payment button {
+        z-index: 50;
+        position: relative;
+    }
+    .slt-checkout-container {flex-direction: column;}
     .products {
         gap: .5rem;
         display: grid;
@@ -772,12 +809,7 @@ p button:hover {
         height: 32.5dvh;
     }
     .subscribe input { width: 75%; }
-    nav {padding: 20px 25px;}
-    nav > div:first-child {
-        gap: 2rem;
-        width: 75%;
-        justify-content: start;
-    }
+    nav > div:first-child {width: 55%;}
     .instagram-grid {
         height: 75%;
         grid-template-columns: repeat(2, 1fr);
@@ -790,6 +822,7 @@ p button:hover {
         top: 7.5%;
         width: 60px; 
     }
+    .checkout h1 {top: 50px;}
     .product p, .product2 p {font-size: small;}
     nav > div:last-child {
         right: 10px;
@@ -823,6 +856,7 @@ p button:hover {
 }
 @media screen and (width <= 560px) {
     strong{font-size: x-large;}
+    .checkout h1{font-size: 27.5px;}
     .header-img1 p, .header-img2 p, .header-img3 p {
         width: 45%;
         font-size: small;
@@ -839,12 +873,15 @@ p button:hover {
     .login, .slt-contact-container p, .slt-contact-container ul { width: 90%;}
     ::-webkit-scrollbar {width: 0px;}
     .footer-content + p {font-size: 11.25px;}
-    
     .slt-flip-card-front, .slt-flip-card-back { height: 225px};
     .cart-component {
         left: -200px;
         width: 275px;
     }
+    
+    .checkout h1 {top: 35px;}
+    .checkout img {width: 75px;}
+    .checkout p, .checkout .subtotal p{font-size: 12.5px;}
     .slt-aside {display: none;}
     .home-menu img { border: 5px solid whitesmoke; }
     .header-img1 p, .header-img2 p, .header-img3 p {
@@ -857,4 +894,5 @@ p button:hover {
         height: 85px;
         width: calc(150% + 1.3px);
     }
+    
 }

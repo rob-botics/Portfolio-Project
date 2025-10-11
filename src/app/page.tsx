@@ -2,6 +2,7 @@
 
 'use client'
 import Link from "next/link";
+import "./styles/portfolio.css";
 import Slider from "./components/Slider";
 import { PageWrapper } from './components/PageWrapper';
 import { useInView } from "react-intersection-observer";

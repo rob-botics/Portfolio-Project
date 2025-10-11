@@ -89,8 +89,10 @@ export default function Checkout() {
     return (
         <PageWrapper>
             <div className="checkout slt-checkout-container slt-secondary-bg">
+                <h1>Checkout</h1>
                 <div className="checkout-cart">
-                    {state.items.map((item, index) => (
+                    <div>
+                        {state.items.map((item, index) => (
                         <div key={index} className="cart-item">
                             <div className="cart-item-info">
                                 <img src={item.img} alt={item.id} width={50} />
@@ -107,7 +109,11 @@ export default function Checkout() {
                             </div>
                             <hr/>
                         </div>
-                    ))}
+                        ))}
+                        <div className="cart-total">
+                            Total: ${state.items.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)}
+                        </div>
+                    </div>
                 </div>
                 {!clientSecret ? <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
                 : <div className="payment">
@@ -151,7 +157,7 @@ function CheckoutForm({cartTotal}: Total){
             <LinkAuthenticationElement onChange={e => setEmail(e.value.email)}/>
             {errorMessage && <p>{errorMessage}</p>}
             <button onClick={() => handlePayment()} disabled={stripe == null || elements == null || isProcessing}>
-                {isProcessing ? 'Purchasing...': `Purchase ${cartTotal}`}
+                {isProcessing ? 'Purchasing...': `Purchase $${cartTotal}`}
             </button>
             
         </>

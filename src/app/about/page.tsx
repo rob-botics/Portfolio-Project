@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
+import "@/app/styles/portfolio.css";
 import dynamic from "next/dynamic";
 import Map from "../components/Map";
 import Playlist from '../components/PlaylistSlider';
