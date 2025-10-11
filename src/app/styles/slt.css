@@ -6,6 +6,12 @@
     color: whitesmoke;
     --primary-font: "Indie Flower";
     --secondary-font: "M PLUS Rounded 1c";
+    --header-img1: url('../../../public/img/slt/home/stlcupcakes.jpg');
+    --header-img1-mobile: url('../../../public/img/slt/home/stlcupcakes-mobile.jpg');
+    --header-img2: url('../../../public/img/slt/home/stlcake.jpg');
+    --header-img2-mobile: url('../../../public/img/slt/home/stlcake-mobile.jpg');
+    --header-img3: url('../../../public/img/slt/home/sprinkles.jpg');
+    --header-img3-mobile: url('../../../public/img/slt/home/sprinkles-mobile.jpg');
     --slt-primary-color: rgba(231, 84, 128, 0.925);
 }
 /* Home */
@@ -328,21 +334,14 @@ header{
     height: 100dvh;
     scroll-snap-align: start;
 }
-.header-img1{
+.header-img1, .header-img2, .header-img3{
     position: relative;
     min-height: 100dvh;
-    background-image: url('../../../public/img/slt/home/stlcupcakes.jpg');
+    background-size: 100% 100%;
 }
-.header-img2{
-    position: relative;
-    min-height: 100dvh;
-    background-image: url('../../../public/img/slt/home/stlcake.jpg');
-}
-.header-img3{
-    position: relative;
-    min-height: 100dvh;
-    background-image: url('../../../public/img/slt/home/sprinkles.jpg');
-}
+.header-img1{background-image: var(--header-img1);}
+.header-img2{background-image: var(--header-img2)}
+.header-img3{background-image: var(--header-img3);}
 .sprinkles{
     width: 100%;
     display: flex;
@@ -482,6 +481,7 @@ p button:hover {
     background: var(--slt-primary-color);
 }
 .error{
+    font-size: large;
     font-weight: bold;
     color: palevioletred;
     font-family: var(--secondary-font);
@@ -822,6 +822,7 @@ p button:hover {
         top: 7.5%;
         width: 60px; 
     }
+    .cart-total {padding-top: 35px;}
     .checkout h1 {top: 50px;}
     .product p, .product2 p {font-size: small;}
     nav > div:last-child {
@@ -888,6 +889,9 @@ p button:hover {
         width: 75%;
         font-size: small;
     }
+    .header-img1{background-image: var(--header-img1-mobile);}
+    .header-img2{background-image: var(--header-img2-mobile);}
+    .header-img3{background-image: var(--header-img3-mobile);}
     .home-menu {grid-template-columns: repeat(2, 42.5%);}
     .slt-section-title, .slt-section-title2 { font-size: x-large; }
     .wave-top .wave, .slt-footer > svg {

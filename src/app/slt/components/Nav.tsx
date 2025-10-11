@@ -31,6 +31,7 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
     const pathname = usePathname()
 
     const { dispatch } = useCart();
+    const [message, setMessage] = useState('')
     const [isCart, setIsCart] = useState(false)
     const cartCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -62,9 +63,18 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
     }, [state.items])
     
    function handleCheckout() {
-        if(!pathname.includes('checkout'))
-            router.push('/slt/checkout')     
-        setIsCart(prev => !prev)   
+        if(!pathname.includes('checkout') && state.items.length > 0){
+            console.log(state.items.length)
+            router.push('/slt/checkout')  
+            setIsCart(prev => !prev)  
+         }
+        else {
+            setMessage('Your Cart is Empty. Add Items before progressing to checkout.') 
+            setTimeout(() => {
+                setMessage('')
+            }, 5000)
+        }
+          
     }
 
     if (!isClient) return <LoadingScreen loaded={isClient}/>
@@ -114,6 +124,7 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
                                 Total: ${state.items.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)}
                                 <button onClick={() => handleCheckout()}>Checkout</button>
                             </div>
+                            {message && <p className='error'>{message}</p>}
                         </div>
                        <span><Link href='/slt/login'>Login</Link></span>
                     </div>
