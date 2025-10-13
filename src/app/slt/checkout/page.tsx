@@ -82,7 +82,8 @@ export default function Checkout() {
         },
         rules: {
             '.Label': {
-            color: 'whitesmoke',
+                color: 'whitesmoke',
+                paddingTop: '10px'
             }
         }
     };
