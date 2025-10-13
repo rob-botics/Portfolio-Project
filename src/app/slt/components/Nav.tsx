@@ -104,7 +104,7 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
                                 :state.items.map((item, index) => (
                                     <li key={index} className="cart-item">
                                         <div className="cart-item-info">
-                                            <img src={item.img} alt={item.id} width={50} />
+                                            <img src={item.img} alt={item.id} width={50} height={50}/>
                                             <p>{item.id}</p>
                                             <p>Price: ${item.price}</p>
                                             <p>Quantity: {item.quantity}</p>
