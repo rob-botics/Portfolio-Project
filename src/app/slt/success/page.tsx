@@ -9,10 +9,10 @@ import { useEffect } from "react";
 
 export default function Success(){
     const { state } = useCart();
-
+    const { dispatch } = useCart();
     useEffect(() => {
-        
-    })
+        state.items.map(item => dispatch({type: 'REMOVE_ITEM', payload: item.id }))
+    }, [])
     return(
         <PageWrapper>
             <div style={{alignItems: 'center'}} className="slt-secondary-bg slt-success-container">
