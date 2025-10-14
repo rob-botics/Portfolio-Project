@@ -141,7 +141,7 @@ const Menu = () => {
                             <div className="slt-flip-card-inner">
                                 <div className="slt-flip-card-front">
                                     <img src={jello.img} alt={jello.id} />
-                                    <p style={jello.id.includes('Mango') || jello.id.includes('Grape') ? {whiteSpace: 'pre-line'} : {}}>{jello.id}<br/>${jello.price}</p>
+                                    <p>{jello.id}<br/>${jello.price}</p>
                                     <div className='product-btn-container'>
                                         <button onClick={() => handleFlip(index)}>Ingredrients</button>
                                         <button onClick={() => handleAddItem(jello)}>Add to Cart</button>
