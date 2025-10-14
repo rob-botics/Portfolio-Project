@@ -4,7 +4,9 @@ import { PageWrapper } from "../components/PageWrapper"
 const Projects = () => {
     return(
         <PageWrapper>
-            <h1>Projects Page</h1>
+            <section>
+                <h1>Projects Page</h1>
+            </section>
         </PageWrapper>
     )
 }

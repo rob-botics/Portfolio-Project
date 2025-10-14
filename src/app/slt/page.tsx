@@ -71,7 +71,7 @@ const Home = () => {
                         </div>
                         <div>
                             <Link href="/slt/menu#jellos"><img src={'/img/slt/home/home-jello.jpg'} alt='home cake'/></Link>
-                            <p>Jello</p>
+                            <p>Jellos</p>
                         </div>                    
                     </div>
                 </section>
