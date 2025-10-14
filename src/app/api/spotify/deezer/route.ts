@@ -13,7 +13,8 @@ export async function GET(req: NextRequest) {
 
   try {
     const query = (track.includes('Be Your Girl')) 
-      ? `artist:"${artist}"track:"${track.split('(')[0].trim()}"&type=track`
+      ? `artist:"${artist}"track:"${track.split('(')[0].trim()}"&type=track` 
+      : track.includes('Married') ? `artist:"${artist}"track:"${track}"album:"${'J.E. Heartbreak'}"&type=track`
       : `artist:"${artist}"track:"${track}"album:"${album}"&type=track`;
 
     const deezerRes = await fetch(`https://api.deezer.com/search?q=${encodeURIComponent(query)}`);
