@@ -659,7 +659,8 @@ p button:hover {
 .payment p {
     margin: 0;
     font-size: large;
-    color: palevioletred;
+    font-weight: bold;
+    color: whitesmoke;
 }
 /* End of Checkout */
 /* Success */
