@@ -2,6 +2,7 @@
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+import { useRouter } from 'next/navigation';
 import React, { ReactElement } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
@@ -20,6 +21,7 @@ const Slider = ({page}: SliderProps) => {
     for (let i = 1; i <= 26; i++) 
         petsSlides.push(<SwiperSlide style={{height: 'auto'}} className={`slider-img${i}`}><img src={`img/pets/cat${i}.jpg`} alt='Images of me'/></SwiperSlide>);
     
+    const router = useRouter()
     return(
         <>
         {page === 'home' ?
@@ -50,7 +52,7 @@ const Slider = ({page}: SliderProps) => {
                     <p>
                         <strong>Shake up your sweet tooth with a Cupquake of Flavor!</strong><br/> Craving something sweet? Indulge in our
                         handcrafted cupcakes — fluffy, moist, and topped with irresistible buttercream. Perfect for parties, gifts, or a well-deserved treat.<br/><br/>
-                        <button>Order Now!</button>
+                        <button onClick={() => router.push('/slt/menu')}>Order Now!</button>
                     </p>
                 </SwiperSlide>
                 <SwiperSlide className='header-img2'>
@@ -61,7 +63,7 @@ const Slider = ({page}: SliderProps) => {
                             Whether it’s a small win or just because, our cakes are the perfect way to celebrate you.
                             🍰 Fluffy layers, rich frosting, and flavors that melt your stress away.Because life’s too short to skip dessert.
                             Order Now and treat yourself to a slice of happiness.<br/><br/>
-                            <button>Order Now!</button>
+                            <button onClick={() => router.push('/slt/menu')}>Order Now!</button>
                         </p>
                     </div>
                 </SwiperSlide>
@@ -70,7 +72,7 @@ const Slider = ({page}: SliderProps) => {
                         <strong style={{fontSize: 'xx-large'}}>Sprinkle of Joy for the Spring!</strong><br/> Sprinkle Some Joy This Spring 
                         With 25% OFF Of A Order Of $30 or More! Because everything’s better with a sprinkle on top! Hurry, offer valid for a limited time.
                         Order Now and let the joy begin! <br/><br/>
-                        <button>Order Now!</button>
+                        <button onClick={() => router.push('/slt/menu')}>Order Now!</button>
                     </p>
                 </SwiperSlide>
             </Swiper>
