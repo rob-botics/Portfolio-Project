@@ -11,7 +11,6 @@ import LoadingScreen from '@/app/components/LoadingScreen'
 import { useCart } from '@/app/slt/components/CartProvider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
-import { POST } from '@/app/api/email/route';
 library.add(fas, far, fab)
 
 type Products = {

@@ -3,13 +3,13 @@
 'use client'
 
 import "@/app/styles/slt.css";
-import { Appearance, loadStripe } from '@stripe/stripe-js'
 import React, { useEffect, useState } from 'react'
-import { Elements, LinkAuthenticationElement } from '@stripe/react-stripe-js'
+import { Appearance, loadStripe } from '@stripe/stripe-js'
 import { PageWrapper } from '@/app/components/PageWrapper'
 import { useCart } from '@/app/slt/components/CartProvider'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Elements, LinkAuthenticationElement } from '@stripe/react-stripe-js'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
@@ -138,12 +138,12 @@ function CheckoutForm({cartTotal}: Total){
     const [isProcessing, setIsProcessing] = useState<boolean>(false)
 
     function handlePayment(){
-        if (stripe == null || elements == null) return
+        if (stripe == null || elements == null || email == null) return
 
         setIsProcessing(true)
 
         stripe.confirmPayment({elements, confirmParams: {
-            return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}//sucess`
+            return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}`
         }}).then(({error}) => {
             if(error.type === 'card_error' || error.type === 'validation_error')
                 setErrorMessage(error.message)
@@ -154,9 +154,9 @@ function CheckoutForm({cartTotal}: Total){
 
     return (
         <>  
+             {errorMessage && <p>{errorMessage}</p>}
             <PaymentElement/>
             <LinkAuthenticationElement onChange={e => setEmail(e.value.email)}/>
-            {errorMessage && <p>{errorMessage}</p>}
             <button onClick={() => handlePayment()} disabled={stripe == null || elements == null || isProcessing}>
                 {isProcessing ? 'Purchasing...': `Purchase $${cartTotal}`}
             </button>

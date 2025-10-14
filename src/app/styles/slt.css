@@ -283,7 +283,7 @@ nav a:hover{scale: 1.175;}
     gap: 2rem;
     display: flex;
 }
-.login-btns button{
+.login-btns button, .slt-success-container a{
     width: 50%;
     border: none;
     padding: 10px;
@@ -304,7 +304,7 @@ nav a:hover{scale: 1.175;}
 .payment button:disabled{
     filter: saturate(.5);
 }
-.login-btns button:hover, .login-btns button.active, .login > button:hover, .cart-total button:hover, .payment button:hover {
+.login-btns button:hover, .login-btns button.active, .login > button:hover, .cart-total button:hover, .payment button:hover, .slt-success-container a:hover {
     scale: 1.05;
     background: whitesmoke;
     color: var(--slt-primary-color);
@@ -592,7 +592,7 @@ p button:hover {
 }
 /* End of Menu */
 /* Contact */
-.slt-contact-container, .slt-checkout-container{
+.slt-contact-container, .slt-checkout-container, .slt-success-container{
     display: flex;
     transition: .5s;
     font-size: large;
@@ -628,7 +628,7 @@ p button:hover {
 .checkout h1{
     top: 25px;
     z-index: 1000;
-    position: relative;
+    position: absolute;
     font-family: var(--primary-font)
 }
 .checkout-cart{
@@ -662,6 +662,25 @@ p button:hover {
     color: palevioletred;
 }
 /* End of Checkout */
+/* Success */
+.slt-success-container{
+    width: 100%;
+    text-align: center;
+    letter-spacing: .125rem;
+    font-family: var(--primary-font);
+}
+.slt-success-container a {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+.slt-success-container img {width: 250px}
+.slt-success-container div{
+    gap: 2rem;
+    width: 50%;
+    display: flex;
+}
+/* End of Success */
 /* Footer */
 .slt-footer{
     bottom: 0; 
@@ -754,7 +773,7 @@ p button:hover {
 }
 @media screen and (width <= 880px) {
     .product img, .product2 img { width: 150px;}
-    .login { width: 75%; }
+    .login, .slt-success-container div { width: 75%; }
 }
 @media screen and (width <= 775px) {
     .third{order: 3;}
@@ -783,6 +802,7 @@ p button:hover {
     .checkout h1{ 
         top: 70px; 
         z-index: 0;
+        position: relative;
     }
     .checkout-cart{width: 100%; height: 100%;}
     .payment{
