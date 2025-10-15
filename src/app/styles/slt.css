@@ -108,7 +108,7 @@ nav{
     justify-content: space-between;
 }
 nav > div:first-child{
-    width: 32.5%;
+    width: 55%;
     display: flex;
     font-size: large;
     font-weight: bold;
@@ -735,18 +735,15 @@ p button:hover {
         padding: 5px;
      }
 }
-@media screen and (width <= 1250px) {
-    nav > div:first-child{width: 37.5%}
-}
 @media screen and (width <= 1148px) {
     .wave-top .wave, .slt-footer > svg{ height: 125px; }
     .product img, .product2 img { width: 185px; }
     .product-btn-container button {
         font-size: 12px;
     }
+    nav > div:first-child{width: 60%}
 }
 @media screen and (width <= 1086px) {
-    nav > div:first-child{width: 42.5%}
     .product img, .product2 img { width: 167.5px; }
     .product-btn-container {
         gap: .5rem;
@@ -763,10 +760,13 @@ p button:hover {
         padding: 25px 12.5px;
     }
 }
+
+@media screen and (width <= 1024px) {
+    nav > div:first-child{width: 65%}
+}
 @media screen and (width <= 990px) { 
     nav {padding: 20px 25px;}      
     strong{font-size: x-large;}
-    nav > div:first-child{width: 47.5%; }
     .header-img1 p, .header-img2 p, .header-img3 p { font-size: medium; }
 }
 @media screen and (width <= 968px) {
@@ -834,7 +834,10 @@ p button:hover {
         height: 32.5dvh;
     }
     .subscribe input { width: 75%; }
-    nav > div:first-child {width: 55%;}
+    nav > div:first-child {
+        width: 67.5%;
+        font-size: medium;
+    }
     .instagram-grid {
         height: 75%;
         grid-template-columns: repeat(2, 1fr);
