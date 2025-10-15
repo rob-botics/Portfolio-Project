@@ -5,9 +5,10 @@ import { useState, useEffect, ReactNode } from 'react';
 type Props = {
   children: ReactNode;
   threshold?: number;
+  section?: string
 };
 
-export default function LazyRenderer({ children, threshold = 0.1 }: Props) {
+export default function LazyRenderer({ children, threshold = 0.1, section }: Props) {
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const { ref, inView } = useInView({ threshold });
