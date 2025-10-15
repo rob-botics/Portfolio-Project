@@ -30,7 +30,7 @@ const Home = () => {
                 method: 'POST',
                 body: JSON.stringify({
                     firstName: firstName,
-                    email: email    
+                    email: email,   
                 })
             })
             if(!welcomeRes.ok) 
@@ -44,9 +44,8 @@ const Home = () => {
             const welcomeData = await welcomeRes.json();
             console.log('Welcome: ',welcomeData, emailRef.current?.value)
         }
-        else {
+        else 
             setError(true)
-        }
     }
     
     return(

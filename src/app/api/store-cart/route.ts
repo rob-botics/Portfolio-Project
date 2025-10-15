@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
 
 export async function POST(req: NextRequest) {
     try{
-        const { items } = await req.json()
+        const { items, email } = await req.json()
         
         if (!items || !Array.isArray(items)) 
             return NextResponse.json({ error: 'Invalid cart' }, { status: 400 })
@@ -15,10 +15,10 @@ export async function POST(req: NextRequest) {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: Math.round(amount * 100), // convert to cents
             currency: 'USD',
-            metadata: {cart: JSON.stringify(items),},
+            metadata: {cart: JSON.stringify(items), email}
         });
 
-        return NextResponse.json({clientSecret: paymentIntent.client_secret,});
+        return NextResponse.json({clientSecret: paymentIntent.client_secret});
 
     } catch (error) {
         console.error('Stripe API error:', error);

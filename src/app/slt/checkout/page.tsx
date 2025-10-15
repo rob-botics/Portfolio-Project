@@ -11,6 +11,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Elements, LinkAuthenticationElement } from '@stripe/react-stripe-js'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
+import { color } from "framer-motion";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
 type Products = {
@@ -26,7 +27,6 @@ export default function Checkout() {
     const { dispatch } = useCart();
     const [cartTotal, setCartTotal] = useState<number>(0)
     const [clientSecret, setClientSecret] = useState<string>('');
-
 
     async function handleGetSecretClient(): Promise<string | undefined> {
         if (state.items.length > 0) 
@@ -56,6 +56,7 @@ export default function Checkout() {
         setCartTotal(parseFloat(state.items.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)))
     },[state.items])
 
+
      const handleAddItem = (products: Products[], productName: string) => {
         console.log("Object: ",products)
         const product = products.find(product => product.id === productName) as Products
@@ -75,7 +76,7 @@ export default function Checkout() {
         theme: 'stripe', // or 'flat', 'night', or 'none'
         variables: {
             borderRadius: '4px',
-            colorText: '#e75480ec',
+            colorText: 'black',
             colorPrimary: '#e75480ec',
             colorBackground: 'whitesmoke',
             fontFamily: "'M PLUS Rounded 1c', arial",
@@ -119,7 +120,7 @@ export default function Checkout() {
                 {!clientSecret ? <FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" />
                 : <div className="payment">
                     <Elements options={{clientSecret, appearance}} stripe={stripePromise}>
-                        <CheckoutForm cartTotal={cartTotal} />
+                        <CheckoutForm cartTotal={cartTotal}/>
                     </Elements>
                 </div>}
             </div>
@@ -143,7 +144,7 @@ function CheckoutForm({cartTotal}: Total){
         setIsProcessing(true)
 
         stripe.confirmPayment({elements, confirmParams: {
-            return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}`
+            return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}?email=${encodeURIComponent(email)}`
         }}).then(({error}) => {
             if(error.type === 'card_error' || error.type === 'validation_error')
                 setErrorMessage(error.message)
@@ -154,13 +155,12 @@ function CheckoutForm({cartTotal}: Total){
 
     return (
         <>  
-             {errorMessage && <p>{errorMessage}</p>}
+            {errorMessage && <p>{errorMessage}</p>}
             <PaymentElement/>
             <LinkAuthenticationElement onChange={e => setEmail(e.value.email)}/>
             <button onClick={() => handlePayment()} disabled={stripe == null || elements == null || isProcessing}>
                 {isProcessing ? 'Purchasing...': `Purchase $${cartTotal}`}
             </button>
-            
         </>
     )
 }

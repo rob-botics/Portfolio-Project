@@ -1,17 +1,39 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import "@/app/styles/slt.css";
-import { useCart } from '@/app/slt/components/CartProvider'
-import { PageWrapper } from "@/app/components/PageWrapper";
 import Link from "next/link";
+import "@/app/styles/slt.css";
 import { useEffect } from "react";
+import { useSearchParams } from 'next/navigation'
+import { PageWrapper } from "@/app/components/PageWrapper";
+import { useCart } from '@/app/slt/components/CartProvider';
 
 export default function Success(){
     const { state } = useCart();
     const { dispatch } = useCart();
+    const searchParams = useSearchParams();
+    const email = searchParams.get('email');
     useEffect(() => {
-        state.items.map(item => dispatch({type: 'REMOVE_ITEM', payload: item.id }))
+            async function sendReceipt(){
+                const receiptRes = await fetch('../../api/email', {
+                    headers: {'Content-Type': 'application/json'},
+                    method: 'POST',
+                    body: JSON.stringify({
+                        firstName: '',
+                        email: email,
+                        success: true,
+                        items: state.items
+                    })
+
+                })
+
+                if(!receiptRes.ok)
+                    throw new Error('Receipt Failed to Send.');
+                else 
+                    state.items.map(item => dispatch({type: 'REMOVE_ITEM', payload: item.id }))
+            }
+            sendReceipt()
+        
     }, [])
     return(
         <PageWrapper>

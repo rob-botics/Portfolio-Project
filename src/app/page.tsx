@@ -41,7 +41,6 @@ export default function Home ({theme}: HomeProps) {
 
     return(
         <PageWrapper>
-            
                 <LazyRenderer>
                     <section style={{display: 'block'}}>
                         <div className={`headshot ${headshotFade ? 'fade' : ''}`}><Slider page={'home'}/></div>

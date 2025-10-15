@@ -648,13 +648,12 @@ p button:hover {
 }
 .slt-checkout-container{flex-direction: row;}
 .payment{
-    width: 35%; 
     padding: 10px;
     display: flex;
     font-weight: bold;
     overflow-y: scroll;
-    justify-content: end;
     flex-direction: column;
+    width: 35%; height: 65dvh
 }
 .payment p {
     margin: 0;
