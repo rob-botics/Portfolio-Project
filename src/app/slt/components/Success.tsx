@@ -24,7 +24,6 @@ export default function Success(){
                         success: true,
                         items: state.items
                     })
-
                 })
 
                 if(!receiptRes.ok)
