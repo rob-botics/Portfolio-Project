@@ -32,7 +32,6 @@ export default function Success(){
             }
         }
         sendReceipt()
-        
     }, [])
     return(
         <PageWrapper>
