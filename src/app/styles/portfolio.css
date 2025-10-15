@@ -861,7 +861,7 @@ small{
 }
 /* End of About Me */
 /* Projects */
-.project-parapgraph{
+p.project-paragraph{
     text-align: center;
     font-family: var(--font-primary);
 }
