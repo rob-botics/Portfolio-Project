@@ -27,7 +27,7 @@ export default function Success(){
             if(!receiptRes.ok)
                 throw new Error('Receipt Failed to Send.');
             else{
-                // localStorage.removeItem('email')
+                localStorage.removeItem('email')
                 state.items.map(item => dispatch({type: 'REMOVE_ITEM', payload: item.id }))
             }
         }
