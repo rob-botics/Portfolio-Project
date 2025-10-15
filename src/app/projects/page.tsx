@@ -6,6 +6,7 @@ const Projects = () => {
         <PageWrapper>
             <section>
                 <h1>Projects Page</h1>
+                <p className="project-paragraph">Work in progress...</p>
             </section>
         </PageWrapper>
     )

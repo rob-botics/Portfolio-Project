@@ -860,6 +860,12 @@ small{
     background: var(--primary-color);
 }
 /* End of About Me */
+/* Projects */
+.project-parapgraph{
+    text-align: center;
+    font-family: var(--font-primary);
+}
+/* End of Projects */
 /* Footer */
 footer{
     display: flex;

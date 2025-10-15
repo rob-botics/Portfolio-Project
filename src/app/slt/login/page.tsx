@@ -55,6 +55,7 @@ const Login = () => {
                         </form>
                     </div>
                     <button onClick={() => handleSubmit()} type="submit">{loginBTN}</button>
+                    <p>Full functionality coming soon!</p>
                 </div>
             </div>
         </PageWrapper>

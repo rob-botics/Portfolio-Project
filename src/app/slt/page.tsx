@@ -36,7 +36,8 @@ const Home = () => {
             if(!welcomeRes.ok) 
                 throw new Error('Subscription Failed. Try again!');
             else {
-                email = ''
+                if(emailRef.current)
+                    emailRef.current.value = ''
                 alert('You Have Successfully Subscribed')
                 setSubscribe(false)
             }
