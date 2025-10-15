@@ -11,7 +11,7 @@ export default function Success(){
     return(
         <PageWrapper>
             <Suspense fallback={<div><FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" /></div>}>
-                <Success />
+                <Success/>
             </Suspense>
         </PageWrapper>
     )
