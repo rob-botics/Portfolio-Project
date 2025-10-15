@@ -10,28 +10,28 @@ import { useCart } from '@/app/slt/components/CartProvider';
 export default function Success(){
     const { state } = useCart();
     const { dispatch } = useCart();
-    const email = localStorage.getItem('email');
     useEffect(() => {
-            async function sendReceipt(){
-                const receiptRes = await fetch('../../api/email', {
-                    headers: {'Content-Type': 'application/json'},
-                    method: 'POST',
-                    body: JSON.stringify({
-                        firstName: '',
-                        email: email,
-                        success: true,
-                        items: state.items
-                    })
+        const email = localStorage.getItem('email');
+        async function sendReceipt(){
+            const receiptRes = await fetch('../../api/email', {
+                headers: {'Content-Type': 'application/json'},
+                method: 'POST',
+                body: JSON.stringify({
+                    firstName: '',
+                    email: email,
+                    success: true,
+                    items: state.items
                 })
+            })
 
-                if(!receiptRes.ok)
-                    throw new Error('Receipt Failed to Send.');
-                else{
-                    localStorage.removeItem('email')
-                    state.items.map(item => dispatch({type: 'REMOVE_ITEM', payload: item.id }))
-                }
+            if(!receiptRes.ok)
+                throw new Error('Receipt Failed to Send.');
+            else{
+                localStorage.removeItem('email')
+                state.items.map(item => dispatch({type: 'REMOVE_ITEM', payload: item.id }))
             }
-            sendReceipt()
+        }
+        sendReceipt()
         
     }, [])
     return(
