@@ -11,7 +11,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Elements, LinkAuthenticationElement } from '@stripe/react-stripe-js'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
-import { color } from "framer-motion";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
 type Products = {
