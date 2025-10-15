@@ -50,9 +50,9 @@ const social: React.CSSProperties = {
 }
 
 const totalSpacing: React.CSSProperties = {
-  padding: '25px',
   fontSize: 'medium',
   color: 'whitesmoke',
+  padding: '12.5px 25px',
   letterSpacing: '.125rem',
   fontFamily: "'M PLUS Rounded 1c'",
 }

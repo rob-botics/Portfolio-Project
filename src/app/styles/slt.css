@@ -304,7 +304,12 @@ nav a:hover{scale: 1.175;}
 .payment button:disabled{
     filter: saturate(.5);
 }
-.login-btns button:hover, .login-btns button.active, .login > button:hover, .cart-total button:hover, .payment button:hover, .slt-success-container a:hover {
+.payment button:hover{
+    scale: 1.025;
+    background: whitesmoke;
+    color: var(--slt-primary-color);
+}
+.login-btns button:hover, .login-btns button.active, .login > button:hover, .cart-total button:hover, .slt-success-container a:hover {
     scale: 1.05;
     background: whitesmoke;
     color: var(--slt-primary-color);
