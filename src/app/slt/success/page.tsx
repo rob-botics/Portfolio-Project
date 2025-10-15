@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-'use client'
+
 import "@/app/styles/slt.css";
 import { Suspense } from 'react';
 import { PageWrapper } from "@/app/components/PageWrapper";
