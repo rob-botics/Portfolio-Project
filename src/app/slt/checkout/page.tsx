@@ -149,7 +149,12 @@ function CheckoutForm({cartTotal}: Total){
                 setErrorMessage(error.message)
             else
                 setErrorMessage('An unknown error occurred.')
-        }).finally(() => setIsProcessing(false))
+        }).finally(
+            () => {
+                setIsProcessing(false)
+                localStorage.setItem('email', email)
+            }
+        )
     }
 
     return (

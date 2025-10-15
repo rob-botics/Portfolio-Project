@@ -3,18 +3,14 @@
 'use client'
 import Link from "next/link";
 import "@/app/styles/slt.css";
-import { Suspense, useEffect } from "react";
-import { useSearchParams } from 'next/navigation'
+import { useEffect } from "react";
 import { PageWrapper } from "@/app/components/PageWrapper";
 import { useCart } from '@/app/slt/components/CartProvider';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export default function Success(){
     const { state } = useCart();
     const { dispatch } = useCart();
-    const searchParams = useSearchParams();
-    const email = searchParams.get('email');
+    const email = localStorage.getItem('email');
     useEffect(() => {
             async function sendReceipt(){
                 const receiptRes = await fetch('../../api/email', {
@@ -30,24 +26,24 @@ export default function Success(){
 
                 if(!receiptRes.ok)
                     throw new Error('Receipt Failed to Send.');
-                else 
+                else{
+                    localStorage.removeItem('email')
                     state.items.map(item => dispatch({type: 'REMOVE_ITEM', payload: item.id }))
+                }
             }
             sendReceipt()
         
     }, [])
     return(
         <PageWrapper>
-            <Suspense fallback={<div><FontAwesomeIcon style={{fontSize: '75px'}} icon={"fa-solid fa-spinner" as IconProp}  spinPulse size="2xl" /></div>}>
-                <div style={{alignItems: 'center'}} className="slt-secondary-bg slt-success-container">
-                    <img src={'../img/success.gif'}/>
-                    <h1>Your Purchase was successful!!!</h1>
-                    <div>
-                        <Link href='/slt'>Home</Link>
-                        <Link href='/slt/menu'>Menu</Link>
-                    </div>
+            <div style={{alignItems: 'center'}} className="slt-secondary-bg slt-success-container">
+                <img src={'../img/success.gif'}/>
+                <h1>Your Purchase was successful!!!</h1>
+                <div>
+                    <Link href='/slt'>Home</Link>
+                    <Link href='/slt/menu'>Menu</Link>
                 </div>
-            </Suspense>
+            </div>
         </PageWrapper>
     )
 }

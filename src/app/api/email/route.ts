@@ -6,8 +6,6 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: Request){
     const {firstName, email, success, items} = await request.json();
-    console.log(firstName, email, success, items)
-    console.log('Success', success)
     if(success === true)
         await resend.emails.send({
             from: 'noreply@mail.robertamorrison.com',
