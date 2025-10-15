@@ -150,10 +150,7 @@ function CheckoutForm({cartTotal}: Total){
             else
                 setErrorMessage('An unknown error occurred.')
         }).finally(
-            () => {
-                setIsProcessing(false)
-                localStorage.setItem('email', email)
-            }
+            () => setIsProcessing(false)
         )
     }
 
@@ -161,7 +158,7 @@ function CheckoutForm({cartTotal}: Total){
         <>  
             {errorMessage && <p>{errorMessage}</p>}
             <PaymentElement/>
-            <LinkAuthenticationElement onChange={e => setEmail(e.value.email)}/>
+            <LinkAuthenticationElement onChange={e => {setEmail(e.value.email); localStorage.setItem('email', e.value.email)}}/>
             <button onClick={() => handlePayment()} disabled={stripe == null || elements == null || isProcessing}>
                 {isProcessing ? 'Purchasing...': `Purchase $${cartTotal}`}
             </button>
