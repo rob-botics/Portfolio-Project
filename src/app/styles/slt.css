@@ -574,7 +574,7 @@ p button:hover {
     place-content: center;
     flex-direction: column;
     transform: rotateY(180deg);
-    font-family: var(--font-primary);
+    font-family: var(--secondary-font);
     background-color: var(--secondary-color);
 }
 .slt-flip-card-back span{
@@ -906,7 +906,10 @@ p button:hover {
     .login, .slt-contact-container p, .slt-contact-container ul { width: 90%;}
     ::-webkit-scrollbar {width: 0px;}
     .footer-content + p {font-size: 11.25px;}
-    .slt-flip-card-front, .slt-flip-card-back { height: 225px};
+    .slt-flip-card-front, .slt-flip-card-back { 
+        height: 225px;
+        font-size: medium
+    };
     .cart-component {
         left: -200px;
         width: 275px;

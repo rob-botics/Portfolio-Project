@@ -90,7 +90,7 @@ const Nav = ({mobile, closeSidebar}: Mobile) => {
                         <Link onClick={() => handleMobile()} href='/slt' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-house" as IconProp} size='xl'/> Home</span></Link>
                         <Link onClick={() => handleMobile()} href='/slt/menu' className='nav-link'><span><FontAwesomeIcon icon={"fa-solid fa-cake-candles" as IconProp} size='xl'/> Menu</span></Link>
                         <Link onClick={() => handleMobile()} href='/slt/contact' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-user" as IconProp} size='xl'/>Contact</span></Link>
-                        <Link onClick={() => handleMobile()} href='/' className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-address-card" as IconProp} size='xl'/>Portfolio</span></Link>
+                        <Link onClick={() => {handleMobile(); window.location.href = '/'}} href={'#'} className='nav-link'><span><FontAwesomeIcon icon={"fa-regular fa-address-card" as IconProp} size='xl'/>Portfolio</span></Link>
                     </div>
                     <div>
                        <div className='cart-container'>

@@ -20,28 +20,28 @@ type Products = {
 }
 const Menu = () => {
     const cheesecakes: Products[] = [
-        {id: 'Plain Cheesecake', price: '12.99', desc: '', img: '/img/slt/cheesecakes/plain-cc.jpg'},
-        {id: 'Strawberry Cheesecake', price: '15.99', desc: '', img: '/img/slt/cheesecakes/strawberry-cc.jpg'},
-        {id: 'Oreo Cheesecake', price: '13.99', desc: '', img: '/img/slt/cheesecakes/oreo-cc.jpg'},
-        {id: 'Pecan Cheesecake', price: '17.99', desc: '', img: '/img/slt/cheesecakes/pecan-cc.jpg'}
+        {id: 'Plain Cheesecake', price: '12.99', desc: 'Graham cracker crumbs, Sugar, Melted butter, Cream cheese, Eggs, Vanilla , Heavy cream', img: '/img/slt/cheesecakes/plain-cc.jpg'},
+        {id: 'Strawberry Cheesecake', price: '15.99', desc: 'Graham cracker crumbs, Sugar, Melted butter, Cream cheese, Eggs, Vanilla, Heavy cream, Fresh strawberries, Strawberry glaze', img: '/img/slt/cheesecakes/strawberry-cc.jpg'},
+        {id: 'Oreo Cheesecake', price: '13.99', desc: 'Crushed Oreo cookies, Sugar, Melted butter, Cream cheese, Eggs, Vanilla, Heavy cream,  Whipped cream and Mini Oreos', img: '/img/slt/cheesecakes/oreo-cc.jpg'},
+        {id: 'Pecan Cheesecake', price: '17.99', desc: 'Graham cracker or Vanilla wafer crumbs, Sugar, Melted butter, Pecans, Cream cheese, Eggs, Vanilla, Heavy cream, Brown sugar, Carmel', img: '/img/slt/cheesecakes/pecan-cc.jpg'}
     ]
     const cakes: Products[] = [
-        {id: 'Vanilla Bean Cake', price: '12.99', desc: '', img: '/img/slt/cakes/vanilla-cake.jpg'},
-        {id: 'Strawberry Cake', price: '15.99', desc: '', img: '/img/slt/cakes/strawberry-cake.jpg'},
-        {id: 'Chocolate Cake', price: '13.99', desc: '', img: '/img/slt/cakes/chocolate-cake.jpg'},
-        {id: `Carrot \n Cake`, price: '17.99', desc: '', img: '/img/slt/cakes/carrot-cake.jpg'}
+        {id: 'Vanilla Bean Cake', price: '12.99', desc: 'All-purpose flour, sugar, baking powder, salt, eggs, unsalted butter (softened) or oil, whole milk or buttermilk, vanilla extract', img: '/img/slt/cakes/vanilla-cake.jpg'},
+        {id: 'Strawberry Cake', price: '15.99', desc: 'All-purpose flour, sugar, baking powder, salt, eggs, butter, buttermilk, fresh or freeze-dried strawberries, strawberry extract, pink or red food coloring', img: '/img/slt/cakes/strawberry-cake.jpg'},
+        {id: 'Chocolate Cake', price: '13.99', desc: 'All-purpose flour, sugar, cocoa powder, baking powder, baking soda, salt, eggs, butter, buttermilk, hot water, vanilla extract', img: '/img/slt/cakes/chocolate-cake.jpg'},
+        {id: `Carrot \n Cake`, price: '17.99', desc: 'All-purpose flour, sugar, baking powder, baking soda, salt, eggs, oil, grated carrots, cinnamon, nutmeg, vanilla extract, crushed pineapple or applesauce, chopped walnuts or pecans, raisins', img: '/img/slt/cakes/carrot-cake.jpg'}
     ]
     const cupcakes: Products[] = [
-        {id: 'Vanilla Cupcake', price: '5.99', desc: '', img: '/img/slt/cupcakes/vanilla-cupcake.jpg'},
-        {id: 'Strawberry Cupcake', price: '6.49', desc: '', img: '/img/slt/cupcakes/strawberry-cupcake.jpg'},
-        {id: 'Chocolate Cupcake', price: '6.49', desc: '', img: '/img/slt/cupcakes/chocolate-cupcake.jpg'},
-        {id: 'Oreo Cupcake', price: '7.99', desc: '', img: '/img/slt/cupcakes/oreo-cupcake.jpg'}
+        {id: 'Vanilla Cupcake', price: '5.99', desc: 'All-purpose flour, sugar, baking powder, butter cream, salt, eggs, butter, buttermilk, vanilla extract', img: '/img/slt/cupcakes/vanilla-cupcake.jpg'},
+        {id: 'Strawberry Cupcake', price: '6.49', desc: 'All-purpose flour, sugar, baking powder, butter cream salt, eggs, butter, buttermilk, fresh or freeze-dried strawberries, strawberry extract, pink or red food coloring', img: '/img/slt/cupcakes/strawberry-cupcake.jpg'},
+        {id: 'Chocolate Cupcake', price: '6.49', desc: 'All-purpose flour, sugar, cocoa powder, butter cream, baking powder, baking soda, salt, eggs, butter, buttermilk, hot water, vanilla extract', img: '/img/slt/cupcakes/chocolate-cupcake.jpg'},
+        {id: 'Oreo Cupcake', price: '7.99', desc: 'All-purpose flour, sugar, crushed oreos, baking powder, butter cream, salt, eggs, butter, buttermilk, vanilla extract', img: '/img/slt/cupcakes/oreo-cupcake.jpg'}
     ]
     const jellos: Products[] = [
-        {id: 'Mango \n Jello', price: '8.99', desc: '', img: '/img/slt/jellos/mango-jello.jpg'},
-        {id: 'Strawbery Jello', price: '7.49', desc: '', img: '/img/slt/jellos/strawberry-jello.jpg'},
-        {id: 'Bluebery Jello', price: '6.99', desc: '', img: '/img/slt/jellos/blueberry-jello.jpg'},
-        {id: 'Grape \n Jello', price: '6.49', desc: '', img: '/img/slt/jellos/grape-jello.jpg'}
+        {id: 'Mango \n Jello', price: '8.99', desc: 'Mango puree, mango chunks, sugar, unflavored gelatin , water, lemon or lime juice', img: '/img/slt/jellos/mango-jello.jpg'},
+        {id: 'Strawbery Jello', price: '7.49', desc: 'Fresh or frozen strawberries, sugar, unflavored gelatin, water, lemon juice', img: '/img/slt/jellos/strawberry-jello.jpg'},
+        {id: 'Bluebery Jello', price: '6.99', desc: 'Grape juice, grape slices, sugar, unflavored gelatin, lemon juice', img: '/img/slt/jellos/blueberry-jello.jpg'},
+        {id: 'Grape \n Jello', price: '6.49', desc: 'Fresh or frozen blueberries, sugar, unflavored gelatin, water, lemon juice', img: '/img/slt/jellos/grape-jello.jpg'}
     ]
     
     const [flip, setFlip] = useState<number | null>(null)
@@ -79,7 +79,7 @@ const Menu = () => {
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
-                                    test
+                                    {cc.desc}
                                     <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@ const Menu = () => {
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
-                                    test
+                                    {cake.desc}
                                     <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ const Menu = () => {
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
-                                    test
+                                    {cup.desc}
                                     <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@ const Menu = () => {
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
-                                    test
+                                    {jello.desc}
                                     <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
