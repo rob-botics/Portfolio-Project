@@ -44,7 +44,7 @@ const Menu = () => {
         {id: 'Grape \n Jello', price: '6.49', desc: 'Fresh or frozen blueberries, sugar, unflavored gelatin, water, lemon juice', img: '/img/slt/jellos/grape-jello.jpg'}
     ]
     
-    const [flip, setFlip] = useState<number | null>(null)
+    const [flip, setFlip] = useState<string | null>(null)
     const { state } = useCart();
     const { dispatch } = useCart();
 
@@ -52,7 +52,7 @@ const Menu = () => {
         dispatch({ type: 'ADD_ITEM', payload: product });
         console.log("Object: ",state.items)
     }
-    const handleFlip = (index: number) => {setFlip(flip === index ? null : index)}
+    const handleFlip = (id: string) => {setFlip(flip === id ? null : id)}
     return(
         <PageWrapper>
             <main>
@@ -68,19 +68,19 @@ const Menu = () => {
                     <div className="slt-section-title2  ">Cheesecakes</div>
                     <div className="products">
                     {cheesecakes.map((cc, index) => (
-                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === index ? 'flip' : ''}`}>
+                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === cc.id ? 'flip' : ''}`}>
                             <div className="slt-flip-card-inner">
                                 <div className="slt-flip-card-front">
                                     <img src={cc.img} alt={cc.id} />
                                     <p>{cc.id}<br/>${cc.price}</p>
                                     <div className='product-btn-container'>
-                                        <button onClick={() => handleFlip(index)}>Ingredrients</button>
+                                        <button onClick={() => handleFlip(cc.id)}>Ingredrients</button>
                                         <button onClick={() => handleAddItem(cc)}>Add to Cart</button>
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
                                     {cc.desc}
-                                    <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
+                                    <span onClick={() => handleFlip(cc.id)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
                         </div>
@@ -91,19 +91,19 @@ const Menu = () => {
                     <div className="slt-section-title">Cakes</div>
                     <div className="products">
                     {cakes.map((cake, index) => (
-                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === index ? 'flip' : ''}`}>
+                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === cake.id ? 'flip' : ''}`}>
                             <div className="slt-flip-card-inner">
                                 <div className="slt-flip-card-front">
                                     <img src={cake.img} alt={cake.id} />
                                     <p style={cake.id.includes('Carrot') ? {whiteSpace: 'pre-line'} : {}}>{cake.id}<br/>${cake.price}</p>
                                     <div className='product-btn-container'>
-                                        <button onClick={() => handleFlip(index)}>Ingredrients</button>
+                                        <button onClick={() => handleFlip(cake.id)}>Ingredrients</button>
                                         <button onClick={() => handleAddItem(cake)}>Add to Cart</button>
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
                                     {cake.desc}
-                                    <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
+                                    <span onClick={() => handleFlip(cake.id)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
                         </div>
@@ -114,19 +114,19 @@ const Menu = () => {
                     <div className="slt-section-title2">Cupcakes</div>
                     <div className="products">
                     {cupcakes.map((cup, index) => (
-                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === index ? 'flip' : ''}`}>
+                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === cup.id ? 'flip' : ''}`}>
                             <div className="slt-flip-card-inner">
                                 <div className="slt-flip-card-front">
                                     <img src={cup.img} alt={cup.id} />
                                     <p>{cup.id}<br/>${cup.price}</p>
                                     <div className='product-btn-container'>
-                                        <button onClick={() => handleFlip(index)}>Ingredrients</button>
+                                        <button onClick={() => handleFlip(cup.id)}>Ingredrients</button>
                                         <button onClick={() => handleAddItem(cup)}>Add to Cart</button>
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
                                     {cup.desc}
-                                    <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
+                                    <span onClick={() => handleFlip(cup.id)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
                         </div>
@@ -137,19 +137,19 @@ const Menu = () => {
                     <div className="slt-section-title">Jellos</div>
                     <div className="products">
                     {jellos.map((jello, index) => (
-                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === index ? 'flip' : ''}`}>
+                        <div key={index} className={` ${index % 2 === 0 ? 'product' : 'product2'} ${index === 2 ? 'third' : ''} slt-flip-card ${flip === jello.id ? 'flip' : ''}`}>
                             <div className="slt-flip-card-inner">
                                 <div className="slt-flip-card-front">
                                     <img src={jello.img} alt={jello.id} />
                                     <p>{jello.id}<br/>${jello.price}</p>
                                     <div className='product-btn-container'>
-                                        <button onClick={() => handleFlip(index)}>Ingredrients</button>
+                                        <button onClick={() => handleFlip(jello.id)}>Ingredrients</button>
                                         <button onClick={() => handleAddItem(jello)}>Add to Cart</button>
                                     </div>
                                 </div>
                                 <div className="slt-flip-card-back">
                                     {jello.desc}
-                                    <span onClick={() => handleFlip(index)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
+                                    <span onClick={() => handleFlip(jello.id)}><FontAwesomeIcon icon={"fa-solid fa-xmark" as IconProp} size='xl'/></span>
                                 </div>
                             </div>
                         </div>
