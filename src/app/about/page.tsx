@@ -4,17 +4,17 @@ import dynamic from "next/dynamic";
 import "@/app/styles/portfolio.css";
 import Map from "../components/Map";
 import Playlist from '../components/PlaylistSlider';
+import { PageWrapper } from "../components/PageWrapper";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
 import React, { useEffect,useState,useRef, ReactElement } from "react"
 
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
+import Music from "../components/Music";
+import LazyRenderer from "../components/LazyRenderer";
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-import Music from "../components/Music";
-import { PageWrapper } from "../components/PageWrapper";
-import LazyRenderer from "../components/LazyRenderer";
 library.add(fas, far, fab)
 
 const Slider = dynamic(() => import('../components/Slider'), {
@@ -130,6 +130,7 @@ const About = () => {
     const [popularShows, setPopularShows] = useState<PopularMedia[] | undefined>([])
 
     useEffect(() => {
+        document.title = 'Robert A. Morrison - About'
         const show_url = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=1&region=US`
         const fetchShows = async () =>{
             try {

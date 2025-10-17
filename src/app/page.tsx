@@ -32,11 +32,12 @@ export default function Home ({theme}: HomeProps) {
     const priority = ['html', 'css', 'javascript', 'typescript', 'sql', 'react', 'next.js', 'bootstrap', 'git'];
     skillImages.sort((a: Skill, b: Skill) => priority.indexOf(a.name) - priority.indexOf(b.name));
 
+    useEffect(() => {document.title = 'Robert A. Morrison - Home'})
     useEffect(() => {
-    setHeadshotFade(true); // fade out
+        setHeadshotFade(true); // fade out
 
-    const timeout = setTimeout(() => {setHeadshotFade(false); }, 500);
-    return () => clearTimeout(timeout);
+        const timeout = setTimeout(() => {setHeadshotFade(false); }, 500);
+        return () => clearTimeout(timeout);
     }, [theme]);
 
     return(
