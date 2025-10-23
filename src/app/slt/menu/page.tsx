@@ -40,8 +40,8 @@ const Menu = () => {
     const jellos: Products[] = [
         {id: 'Mango \n Jello', price: '8.99', desc: 'Mango puree, mango chunks, sugar, unflavored gelatin , water, lemon or lime juice', img: '/img/slt/jellos/mango-jello.jpg'},
         {id: 'Strawbery Jello', price: '7.49', desc: 'Fresh or frozen strawberries, sugar, unflavored gelatin, water, lemon juice', img: '/img/slt/jellos/strawberry-jello.jpg'},
-        {id: 'Bluebery Jello', price: '6.99', desc: 'Grape juice, grape slices, sugar, unflavored gelatin, lemon juice', img: '/img/slt/jellos/blueberry-jello.jpg'},
-        {id: 'Grape \n Jello', price: '6.49', desc: 'Fresh or frozen blueberries, sugar, unflavored gelatin, water, lemon juice', img: '/img/slt/jellos/grape-jello.jpg'}
+        {id: 'Bluebery Jello', price: '6.99', desc: 'Fresh or frozen blueberries, sugar, unflavored gelatin, water, lemon juice', img: '/img/slt/jellos/blueberry-jello.jpg'},
+        {id: 'Grape \n Jello', price: '6.49', desc: 'Grape juice, grape slices, sugar, unflavored gelatin, lemon juice', img: '/img/slt/jellos/grape-jello.jpg'}
     ]
     
     const [flip, setFlip] = useState<string | null>(null)
