@@ -908,7 +908,7 @@ p button:hover {
     .footer-content + p {font-size: 11.25px;}
     .slt-flip-card-front, .slt-flip-card-back { 
         height: 225px;
-        font-size: medium
+        font-size: small
     };
     .cart-component {
         left: -200px;
