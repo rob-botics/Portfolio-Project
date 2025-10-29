@@ -32,6 +32,8 @@ export default function Success(){
             }
         }
         sendReceipt()
+
+        document.title = 'Sweet Little Things - Success'
     }, [])
     return(
         <PageWrapper>
