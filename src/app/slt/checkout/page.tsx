@@ -49,6 +49,8 @@ export default function Checkout() {
                 setClientSecret(clientSecret);
         }
         fetchClientSecret()
+
+        document.title = 'Sweet Little Things - Checkout'
     }, []);
 
     useEffect(() => {

@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 //npm instal react-email @react-email/button @react-email/html
 'use client'
-import "@/app/styles/slt.css";
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import "@/app/styles/slt.css";
 import Slider from '../components/Slider'
+import { useEffect, useRef, useState } from 'react'
 import { PageWrapper } from '../components/PageWrapper'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Home = () => {
     const emailRef = useRef<HTMLInputElement | null>(null)

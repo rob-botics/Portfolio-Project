@@ -3,14 +3,14 @@
 import Link from 'next/link'
 import "@/app/styles/slt.css";
 import { useEffect, useState } from 'react'
-import { useCart } from '@/app/slt/components/CartProvider'
 import { PageWrapper } from '../../components/PageWrapper'
+import { useCart } from '@/app/slt/components/CartProvider'
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas, far, fab)
 type Products = {
     id: string;
@@ -44,9 +44,9 @@ const Menu = () => {
         {id: 'Grape \n Jello', price: '6.49', desc: 'Grape juice, grape slices, sugar, unflavored gelatin, lemon juice', img: '/img/slt/jellos/grape-jello.jpg'}
     ]
     
-    const [flip, setFlip] = useState<string | null>(null)
     const { state } = useCart();
     const { dispatch } = useCart();
+    const [flip, setFlip] = useState<string | null>(null)
 
     const handleAddItem = (product: Products) => {
         dispatch({ type: 'ADD_ITEM', payload: product });
