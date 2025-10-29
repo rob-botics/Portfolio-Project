@@ -49,7 +49,7 @@ const Home = () => {
             setError(true)
     }
 
-    // useEffect(() => {document.title = 'Sweet Little Things - Home'})
+    useEffect(() => {document.title = 'Sweet Little Things - Home'})
     return(
         <PageWrapper>
             <main>

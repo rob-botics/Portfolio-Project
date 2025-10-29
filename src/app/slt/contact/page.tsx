@@ -1,9 +1,9 @@
 import "@/app/styles/slt.css";
 import { PageWrapper } from "@/app/components/PageWrapper"
 
-// export const metadata = {
-//   title: "Sweet Little Things - Contact",
-// };
+export const metadata = {
+  title: "Sweet Little Things - Contact",
+};
 
 const Contact = () => {
     return(

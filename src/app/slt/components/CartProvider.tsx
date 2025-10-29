@@ -1,5 +1,4 @@
 'use client'
-
 import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react'
 
 type Product = {

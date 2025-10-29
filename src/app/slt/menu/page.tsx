@@ -54,7 +54,7 @@ const Menu = () => {
     }
     const handleFlip = (id: string) => {setFlip(flip === id ? null : id)}
 
-    // useEffect(() => {document.title = 'Sweet Little Things - Menu'})
+    useEffect(() => {document.title = 'Sweet Little Things - Menu'})
     return(
         <PageWrapper>
             <main>

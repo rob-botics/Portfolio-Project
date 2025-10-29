@@ -114,7 +114,7 @@ const Email = (items: OrderProp[]) => {
           <Row>
             <Column style={social}>
               <Text style={{margin: '0'}}>
-                <Link href="www.google.com" style={{color: 'whitesmoke', cursor: 'pointer'}}>
+                <Link href="https://www.robertamorrison.com/slt" style={{color: 'whitesmoke', cursor: 'pointer'}}>
                   www.robertamorrison.com/slt
                   </Link><br/><br/>
               </Text>
