@@ -10,9 +10,9 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Home = () => {
-    const emailRef = useRef<HTMLInputElement | null>(null)
     const [error, setError] = useState(false)
     const [subcribe, setSubscribe] = useState(false)
+    const emailRef = useRef<HTMLInputElement | null>(null)
 
     function checkEmail(email:string){
          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,7 +49,7 @@ const Home = () => {
             setError(true)
     }
 
-    useEffect(() => {document.title = 'Sweet Little Things - Home'})
+    // useEffect(() => {document.title = 'Sweet Little Things - Home'})
     return(
         <PageWrapper>
             <main>
