@@ -3,7 +3,7 @@
 'use client'
 import "@/app/styles/slt.css";
 import Link from 'next/link'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Slider from '../components/Slider'
 import { PageWrapper } from '../components/PageWrapper'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,6 +13,7 @@ const Home = () => {
     const emailRef = useRef<HTMLInputElement | null>(null)
     const [error, setError] = useState(false)
     const [subcribe, setSubscribe] = useState(false)
+
     function checkEmail(email:string){
          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(!emailRegex.test(email))
@@ -47,7 +48,8 @@ const Home = () => {
         else 
             setError(true)
     }
-    
+
+    useEffect(() => {document.title = 'Sweet Little Things - Home'})
     return(
         <PageWrapper>
             <main>

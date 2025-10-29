@@ -2,7 +2,7 @@
 'use client'
 import Link from 'next/link'
 import "@/app/styles/slt.css";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCart } from '@/app/slt/components/CartProvider'
 import { PageWrapper } from '../../components/PageWrapper'
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
@@ -53,6 +53,8 @@ const Menu = () => {
         console.log("Object: ",state.items)
     }
     const handleFlip = (id: string) => {setFlip(flip === id ? null : id)}
+
+    useEffect(() => {document.title = 'Sweet Little Things - Menu'})
     return(
         <PageWrapper>
             <main>

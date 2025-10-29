@@ -79,13 +79,13 @@ const Email = ({firstName}: WelcomeEmailProps) => {
             <Row >
               <Column>
                 <span style={imgText}>Cheesecakes</span>
-                <Link href="#">
+                <Link href="https://www.robertamorrison.com/slt/menu#cheesecakes">
                   <Img style={img} src={'https://images.squarespace-cdn.com/content/v1/5255aaa1e4b00705c7fcccd8/1616081972864-PXBQOJRN1ZI9A4DYKFG1/Mini+Cheese+cakes.jpg'}/>
                 </Link>
               </Column>
               <Column>
                 <span style={imgText}>Cakes</span>
-                <Link href="#">
+                <Link href="https://www.robertamorrison.com/slt/menu#cakes">
                   <Img style={img} src={'https://i.pinimg.com/736x/c7/3b/c8/c73bc804b5f3f99cfb96d93374391929.jpg'}/>
                 </Link>
               </Column>
@@ -93,13 +93,13 @@ const Email = ({firstName}: WelcomeEmailProps) => {
             <Row >
               <Column>
                 <span style={imgText}>Cupcakes</span>
-                <Link href="#">
+                <Link href="https://www.robertamorrison.com/slt/menu#cupcakes">
                   <Img style={img} src={'https://www.glorioustreats.com/wp-content/uploads/2024/05/smore-cupcakes-square.jpeg'}/>
                 </Link>
               </Column>
               <Column>
                 <span style={imgText}>Jellos</span>
-                <Link href="#">
+                <Link href="https://www.robertamorrison.com/slt/menu#jellos">
                   <Img style={img} src={'https://amandascookin.com/wp-content/uploads/2021/12/Broken-Glass-Jello-RC-SQ.jpg'}/>
                 </Link>
               </Column>
@@ -108,7 +108,7 @@ const Email = ({firstName}: WelcomeEmailProps) => {
               <Text style={promo}>USE THIS PROMO CODE FOR 20% OFF <br/><br/> <span style={{border: '2px solid', padding: '12.5px 25px', borderRadius: '8px'}}>SLT20</span></Text>
               <Column style={social}>
                 <Text style={{margin: '0'}}>
-                  <Link href="www.google.com" style={{color: 'whitesmoke', cursor: 'pointer'}}>
+                  <Link href="https://www.robertamorrison.com/slt" style={{color: 'whitesmoke', cursor: 'pointer'}}>
                     www.robertamorrison.com/slt
                     </Link><br/><br/>
                 </Text>

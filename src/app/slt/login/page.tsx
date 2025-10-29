@@ -15,6 +15,8 @@ const Login = () => {
         const pswd = loginPswdRef.current?.value
         console.log('test', email, pswd)
     }
+
+    useEffect(() => {document.title = 'Sweet Little Things - Login'})
     useEffect(() => {
         if(isLogin === false){
             setLoginBTN('Sign Up')
