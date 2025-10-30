@@ -631,7 +631,7 @@ p button:hover {
     font-family: var(--secondary-font);
 }
 .checkout h1{
-    top: 25px;
+    top: 50px;
     z-index: 1000;
     position: absolute;
     font-family: var(--primary-font)
